@@ -1,0 +1,1365 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Java @ 095 - Portfolio - 19/20</title>
+		<link href="style.css" rel="stylesheet" type="text/css" />
+		<link href="https://fonts.googleapis.com/css?family=Rokkitt&display=swap" rel="stylesheet">
+	</head>
+
+	<body>
+			
+		<div id="wrapper">
+			
+			<header>
+				<h1>095 - Portfolio - 19/20</h1>
+			</header>
+		
+			<nav>
+				<ul>
+					<li><a href="index.php">Home</a> 
+					<li><a href="about.html">About</a> 
+					<li><a href="interest.html">Interest</a> 
+					<li><a href="cpp.html">C++</a> 
+					<li><a href="java.html">Java</a>
+					<li><a href="html.html">HTML</a> 
+				</ul>
+			</nav>
+			
+			<main>
+	
+				<div id="content">
+                	<div id="left-content">
+                    	<div id="hilite-adjust">
+							<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">  1
+  2
+  3
+  4
+  5
+  6
+  7
+  8
+  9
+ 10
+ 11
+ 12
+ 13
+ 14
+ 15
+ 16
+ 17
+ 18
+ 19
+ 20
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59
+ 60
+ 61
+ 62
+ 63
+ 64
+ 65
+ 66
+ 67
+ 68
+ 69
+ 70
+ 71
+ 72
+ 73
+ 74
+ 75
+ 76
+ 77
+ 78
+ 79
+ 80
+ 81
+ 82
+ 83
+ 84
+ 85
+ 86
+ 87
+ 88
+ 89
+ 90
+ 91
+ 92
+ 93
+ 94
+ 95
+ 96
+ 97
+ 98
+ 99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143</pre></td><td><pre style="margin: 0; line-height: 125%">PImage<span style="color: #333333">[]</span> coinPictures<span style="color: #333333">;</span><span style="color: #888888">//array for images of coins</span>
+PImage<span style="color: #333333">[]</span> billPictures<span style="color: #333333">;</span><span style="color: #888888">//array for images of bills</span>
+<span style="color: #333399; font-weight: bold">float</span><span style="color: #333333">[]</span> moneyAmount<span style="color: #333333">;</span><span style="color: #888888">//array for amounts of each money</span>
+<span style="color: #333399; font-weight: bold">float</span> totalAmount<span style="color: #333333">;</span><span style="color: #888888">//total amount of money</span>
+<span style="color: #333399; font-weight: bold">int</span> defaultX<span style="color: #333333">;</span><span style="color: #888888">//location for the first image X coordinate</span>
+<span style="color: #333399; font-weight: bold">int</span> defaultY<span style="color: #333333">;</span><span style="color: #888888">//default location for Y of the image</span>
+<span style="color: #333399; font-weight: bold">int</span> coinDiameter<span style="color: #333333">;</span><span style="color: #888888">//diameter of a coin</span>
+<span style="color: #333399; font-weight: bold">int</span> billHeight<span style="color: #333333">,</span> billWidth<span style="color: #333333">;</span><span style="color: #888888">//Height &amp; Width of a bill</span>
+<span style="color: #333399; font-weight: bold">boolean</span> onceOnly<span style="color: #333333">;</span><span style="color: #888888">//loop switch</span>
+
+<span style="color: #333399; font-weight: bold">void</span> <span style="color: #0066BB; font-weight: bold">setup</span><span style="color: #333333">()</span> <span style="color: #333333">{</span>
+  
+  fullScreen<span style="color: #333333">();</span><span style="color: #888888">//fullscreen</span>
+  
+  <span style="color: #888888">//images of coins &amp; bills</span>
+  coinPictures <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">new</span> PImage<span style="color: #333333">[</span><span style="color: #0000DD; font-weight: bold">5</span><span style="color: #333333">];</span>
+  coinPictures<span style="color: #333333">[</span><span style="color: #0000DD; font-weight: bold">0</span><span style="color: #333333">]</span> <span style="color: #333333">=</span> loadImage<span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;nickel.png&quot;</span><span style="color: #333333">);</span><span style="color: #888888">//image of nickels</span>
+  coinPictures<span style="color: #333333">[</span><span style="color: #0000DD; font-weight: bold">1</span><span style="color: #333333">]</span> <span style="color: #333333">=</span> loadImage<span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;dime.png&quot;</span><span style="color: #333333">);</span><span style="color: #888888">//image of dimes</span>
+  coinPictures<span style="color: #333333">[</span><span style="color: #0000DD; font-weight: bold">2</span><span style="color: #333333">]</span> <span style="color: #333333">=</span> loadImage<span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;quarter.png&quot;</span><span style="color: #333333">);</span><span style="color: #888888">//image of quarters</span>
+  coinPictures<span style="color: #333333">[</span><span style="color: #0000DD; font-weight: bold">3</span><span style="color: #333333">]</span> <span style="color: #333333">=</span> loadImage<span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;loonie.png&quot;</span><span style="color: #333333">);</span><span style="color: #888888">//image of loonie</span>
+  coinPictures<span style="color: #333333">[</span><span style="color: #0000DD; font-weight: bold">4</span><span style="color: #333333">]</span> <span style="color: #333333">=</span> loadImage<span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;toonie.png&quot;</span><span style="color: #333333">);</span><span style="color: #888888">//image of toonie</span>
+  billPictures <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">new</span> PImage<span style="color: #333333">[</span><span style="color: #0000DD; font-weight: bold">5</span><span style="color: #333333">];</span>
+  billPictures<span style="color: #333333">[</span><span style="color: #0000DD; font-weight: bold">0</span><span style="color: #333333">]</span> <span style="color: #333333">=</span> loadImage<span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;five.jpg&quot;</span><span style="color: #333333">);</span><span style="color: #888888">//image of five dollars</span>
+  billPictures<span style="color: #333333">[</span><span style="color: #0000DD; font-weight: bold">1</span><span style="color: #333333">]</span> <span style="color: #333333">=</span> loadImage<span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;ten.jpg&quot;</span><span style="color: #333333">);</span><span style="color: #888888">//image of ten dollars</span>
+  billPictures<span style="color: #333333">[</span><span style="color: #0000DD; font-weight: bold">2</span><span style="color: #333333">]</span> <span style="color: #333333">=</span> loadImage<span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;twenty.jpg&quot;</span><span style="color: #333333">);</span><span style="color: #888888">//image of twenty dollars</span>
+  billPictures<span style="color: #333333">[</span><span style="color: #0000DD; font-weight: bold">3</span><span style="color: #333333">]</span> <span style="color: #333333">=</span> loadImage<span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;fifty.jpg&quot;</span><span style="color: #333333">);</span><span style="color: #888888">//image of fifty dollars</span>
+  billPictures<span style="color: #333333">[</span><span style="color: #0000DD; font-weight: bold">4</span><span style="color: #333333">]</span> <span style="color: #333333">=</span> loadImage<span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;hundred.jpg&quot;</span><span style="color: #333333">);</span><span style="color: #888888">//image of hundred dollars</span>
+  <span style="color: #888888">//Value of each coins &amp; bills</span>
+  moneyAmount <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">new</span> <span style="color: #333399; font-weight: bold">float</span><span style="color: #333333">[</span><span style="color: #0000DD; font-weight: bold">10</span><span style="color: #333333">];</span>
+  moneyAmount<span style="color: #333333">[</span><span style="color: #0000DD; font-weight: bold">0</span><span style="color: #333333">]</span> <span style="color: #333333">=</span> <span style="color: #6600EE; font-weight: bold">0.05</span><span style="color: #333333">;</span><span style="color: #888888">//value of nickels</span>
+  moneyAmount<span style="color: #333333">[</span><span style="color: #0000DD; font-weight: bold">1</span><span style="color: #333333">]</span> <span style="color: #333333">=</span> <span style="color: #6600EE; font-weight: bold">0.1</span><span style="color: #333333">;</span><span style="color: #888888">//value of dimes</span>
+  moneyAmount<span style="color: #333333">[</span><span style="color: #0000DD; font-weight: bold">2</span><span style="color: #333333">]</span> <span style="color: #333333">=</span> <span style="color: #6600EE; font-weight: bold">0.25</span><span style="color: #333333">;</span><span style="color: #888888">//value of quarters</span>
+  moneyAmount<span style="color: #333333">[</span><span style="color: #0000DD; font-weight: bold">3</span><span style="color: #333333">]</span> <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">1</span><span style="color: #333333">;</span><span style="color: #888888">//value of loonie</span>
+  moneyAmount<span style="color: #333333">[</span><span style="color: #0000DD; font-weight: bold">4</span><span style="color: #333333">]</span> <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">2</span><span style="color: #333333">;</span><span style="color: #888888">//value of toonie</span>
+  moneyAmount<span style="color: #333333">[</span><span style="color: #0000DD; font-weight: bold">5</span><span style="color: #333333">]</span> <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">5</span><span style="color: #333333">;</span><span style="color: #888888">//value of five dollars</span>
+  moneyAmount<span style="color: #333333">[</span><span style="color: #0000DD; font-weight: bold">6</span><span style="color: #333333">]</span> <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">10</span><span style="color: #333333">;</span><span style="color: #888888">//value of ten dollars</span>
+  moneyAmount<span style="color: #333333">[</span><span style="color: #0000DD; font-weight: bold">7</span><span style="color: #333333">]</span> <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">20</span><span style="color: #333333">;</span><span style="color: #888888">//value of twenty dollars</span>
+  moneyAmount<span style="color: #333333">[</span><span style="color: #0000DD; font-weight: bold">8</span><span style="color: #333333">]</span> <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">50</span><span style="color: #333333">;</span><span style="color: #888888">//value of fifty dollars</span>
+  moneyAmount<span style="color: #333333">[</span><span style="color: #0000DD; font-weight: bold">9</span><span style="color: #333333">]</span> <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">100</span><span style="color: #333333">;</span><span style="color: #888888">//value of hundred dollars</span>
+  totalAmount <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span><span style="color: #333333">;</span><span style="color: #888888">//Total amount of money</span>
+  <span style="color: #888888">//size of the images</span>
+  defaultX <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">50</span><span style="color: #333333">;</span><span style="color: #888888">//location for the first image X coordinate</span>
+  defaultY <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">50</span><span style="color: #333333">;</span><span style="color: #888888">//default location for Y of the image</span>
+  coinDiameter <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">100</span><span style="color: #333333">;</span><span style="color: #888888">//Diameter of a coin</span>
+  billHeight <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">100</span><span style="color: #333333">;</span><span style="color: #888888">//Height of a bill</span>
+  billWidth <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">200</span><span style="color: #333333">;</span><span style="color: #888888">//Width of a bill</span>
+  <span style="color: #888888">//Loop condition</span>
+  onceOnly <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">false</span><span style="color: #333333">;</span><span style="color: #888888">//loop on/off</span>
+  
+<span style="color: #333333">}</span>
+
+<span style="color: #333399; font-weight: bold">void</span> <span style="color: #0066BB; font-weight: bold">draw</span><span style="color: #333333">(){</span>
+  
+  background<span style="color: #333333">(</span><span style="color: #FF0000; background-color: #FFAAAA">#</span>FFFFFF<span style="color: #333333">);</span><span style="color: #888888">//White background</span>
+  drawCoins<span style="color: #333333">();</span><span style="color: #888888">//displays coin images</span>
+  drawBills<span style="color: #333333">();</span><span style="color: #888888">//displays bill images</span>
+  
+  <span style="color: #008800; font-weight: bold">if</span> <span style="color: #333333">(</span>mousePressed<span style="color: #333333">)</span> <span style="color: #333333">{</span><span style="color: #888888">//when press mouse</span>
+  
+    <span style="color: #008800; font-weight: bold">if</span> <span style="color: #333333">(</span>mouseX <span style="color: #333333">&gt;</span> defaultX <span style="color: #333333">&amp;&amp;</span> mouseX <span style="color: #333333">&lt;</span> defaultX <span style="color: #333333">+</span> coinDiameter <span style="color: #333333">&amp;&amp;</span> mouseY <span style="color: #333333">&lt;</span> defaultY <span style="color: #333333">+</span> coinDiameter <span style="color: #333333">&amp;&amp;</span> onceOnly <span style="color: #333333">==</span> <span style="color: #008800; font-weight: bold">false</span><span style="color: #333333">)</span> <span style="color: #333333">{</span><span style="color: #888888">//when press nickel image</span>
+    
+      totalAmount <span style="color: #333333">=</span> totalAmount <span style="color: #333333">+</span> moneyAmount<span style="color: #333333">[</span><span style="color: #0000DD; font-weight: bold">0</span><span style="color: #333333">];</span><span style="color: #888888">//total amount adds up by 0.05</span>
+      onceOnly <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">true</span><span style="color: #333333">;</span><span style="color: #888888">//Boolean so the button is not looping while it being pressed</span>
+      
+    <span style="color: #333333">}</span> <span style="color: #008800; font-weight: bold">else</span> <span style="color: #008800; font-weight: bold">if</span> <span style="color: #333333">(</span>mouseX <span style="color: #333333">&gt;</span> defaultX <span style="color: #333333">+</span> <span style="color: #0000DD; font-weight: bold">300</span> <span style="color: #333333">&amp;&amp;</span> mouseX <span style="color: #333333">&lt;</span> defaultX <span style="color: #333333">+</span> <span style="color: #0000DD; font-weight: bold">300</span> <span style="color: #333333">+</span> coinDiameter <span style="color: #333333">&amp;&amp;</span> mouseY <span style="color: #333333">&lt;</span> defaultY <span style="color: #333333">+</span> coinDiameter <span style="color: #333333">&amp;&amp;</span> onceOnly <span style="color: #333333">==</span> <span style="color: #008800; font-weight: bold">false</span><span style="color: #333333">)</span> <span style="color: #333333">{</span><span style="color: #888888">//when press dime image</span>
+    
+      totalAmount <span style="color: #333333">=</span> totalAmount <span style="color: #333333">+</span> moneyAmount<span style="color: #333333">[</span><span style="color: #0000DD; font-weight: bold">1</span><span style="color: #333333">];</span><span style="color: #888888">//total amount adds up by 0.10</span>
+      onceOnly <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">true</span><span style="color: #333333">;</span><span style="color: #888888">//Boolean so the button is not looping while it being pressed</span>
+      
+    <span style="color: #333333">}</span> <span style="color: #008800; font-weight: bold">else</span> <span style="color: #008800; font-weight: bold">if</span> <span style="color: #333333">(</span>mouseX <span style="color: #333333">&gt;</span> defaultX <span style="color: #333333">+</span> <span style="color: #0000DD; font-weight: bold">600</span> <span style="color: #333333">&amp;&amp;</span> mouseX <span style="color: #333333">&lt;</span> defaultX <span style="color: #333333">+</span> <span style="color: #0000DD; font-weight: bold">600</span> <span style="color: #333333">+</span> coinDiameter <span style="color: #333333">&amp;&amp;</span> mouseY <span style="color: #333333">&lt;</span> defaultY <span style="color: #333333">+</span> coinDiameter <span style="color: #333333">&amp;&amp;</span> onceOnly <span style="color: #333333">==</span> <span style="color: #008800; font-weight: bold">false</span><span style="color: #333333">)</span> <span style="color: #333333">{</span><span style="color: #888888">//when press quarter image</span>
+    
+      totalAmount <span style="color: #333333">=</span> totalAmount <span style="color: #333333">+</span> moneyAmount<span style="color: #333333">[</span><span style="color: #0000DD; font-weight: bold">2</span><span style="color: #333333">];</span><span style="color: #888888">//total amount adds up by 0.25</span>
+      onceOnly <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">true</span><span style="color: #333333">;</span><span style="color: #888888">//Boolean so the button is not looping while it being pressed</span>
+      
+    <span style="color: #333333">}</span> <span style="color: #008800; font-weight: bold">else</span> <span style="color: #008800; font-weight: bold">if</span> <span style="color: #333333">(</span>mouseX <span style="color: #333333">&gt;</span> defaultX <span style="color: #333333">+</span> <span style="color: #0000DD; font-weight: bold">900</span> <span style="color: #333333">&amp;&amp;</span> mouseX <span style="color: #333333">&lt;</span> defaultX <span style="color: #333333">+</span> <span style="color: #0000DD; font-weight: bold">900</span> <span style="color: #333333">+</span> coinDiameter <span style="color: #333333">&amp;&amp;</span> mouseY <span style="color: #333333">&lt;</span> defaultY <span style="color: #333333">+</span> coinDiameter <span style="color: #333333">&amp;&amp;</span> onceOnly <span style="color: #333333">==</span> <span style="color: #008800; font-weight: bold">false</span><span style="color: #333333">)</span> <span style="color: #333333">{</span><span style="color: #888888">//when press loonie image</span>
+    
+      totalAmount <span style="color: #333333">=</span> totalAmount <span style="color: #333333">+</span> moneyAmount<span style="color: #333333">[</span><span style="color: #0000DD; font-weight: bold">3</span><span style="color: #333333">];</span><span style="color: #888888">//total amount adds up by 1.00</span>
+      onceOnly <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">true</span><span style="color: #333333">;</span><span style="color: #888888">//Boolean so the button is not looping while it being pressed</span>
+      
+    <span style="color: #333333">}</span> <span style="color: #008800; font-weight: bold">else</span> <span style="color: #008800; font-weight: bold">if</span> <span style="color: #333333">(</span>mouseX <span style="color: #333333">&gt;</span> defaultX <span style="color: #333333">+</span> <span style="color: #0000DD; font-weight: bold">1200</span> <span style="color: #333333">&amp;&amp;</span> mouseX <span style="color: #333333">&lt;</span> defaultX <span style="color: #333333">+</span> <span style="color: #0000DD; font-weight: bold">1200</span> <span style="color: #333333">+</span> coinDiameter <span style="color: #333333">&amp;&amp;</span> mouseY <span style="color: #333333">&lt;</span> defaultY <span style="color: #333333">+</span> coinDiameter <span style="color: #333333">&amp;&amp;</span> onceOnly <span style="color: #333333">==</span> <span style="color: #008800; font-weight: bold">false</span><span style="color: #333333">)</span> <span style="color: #333333">{</span><span style="color: #888888">//when press toonie image</span>
+    
+      totalAmount <span style="color: #333333">=</span> totalAmount <span style="color: #333333">+</span> moneyAmount<span style="color: #333333">[</span><span style="color: #0000DD; font-weight: bold">4</span><span style="color: #333333">];</span><span style="color: #888888">//total amount adds up by 2.00</span>
+      onceOnly <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">true</span><span style="color: #333333">;</span><span style="color: #888888">//Boolean so the button is not looping while it being pressed</span>
+      
+    <span style="color: #333333">}</span> <span style="color: #008800; font-weight: bold">else</span> <span style="color: #008800; font-weight: bold">if</span> <span style="color: #333333">(</span>mouseX <span style="color: #333333">&gt;</span> defaultX <span style="color: #333333">&amp;&amp;</span> mouseX <span style="color: #333333">&lt;</span> defaultX <span style="color: #333333">+</span> billWidth <span style="color: #333333">&amp;&amp;</span> mouseY <span style="color: #333333">&lt;</span> defaultY <span style="color: #333333">*</span> <span style="color: #0000DD; font-weight: bold">5</span> <span style="color: #333333">+</span> billHeight <span style="color: #333333">&amp;&amp;</span> onceOnly <span style="color: #333333">==</span> <span style="color: #008800; font-weight: bold">false</span><span style="color: #333333">)</span> <span style="color: #333333">{</span><span style="color: #888888">//when press 5 dollar image</span>
+    
+      totalAmount <span style="color: #333333">=</span> totalAmount <span style="color: #333333">+</span> moneyAmount<span style="color: #333333">[</span><span style="color: #0000DD; font-weight: bold">5</span><span style="color: #333333">];</span><span style="color: #888888">//total amount adds up by 1.00</span>
+      onceOnly <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">true</span><span style="color: #333333">;</span><span style="color: #888888">//Boolean so the button is not looping while it being pressed</span>
+      
+    <span style="color: #333333">}</span> <span style="color: #008800; font-weight: bold">else</span> <span style="color: #008800; font-weight: bold">if</span> <span style="color: #333333">(</span>mouseX <span style="color: #333333">&gt;</span> defaultX <span style="color: #333333">+</span> <span style="color: #0000DD; font-weight: bold">300</span> <span style="color: #333333">&amp;&amp;</span> mouseX <span style="color: #333333">&lt;</span> defaultX <span style="color: #333333">+</span> <span style="color: #0000DD; font-weight: bold">300</span> <span style="color: #333333">+</span> billWidth <span style="color: #333333">&amp;&amp;</span> mouseY <span style="color: #333333">&lt;</span> defaultY <span style="color: #333333">*</span> <span style="color: #0000DD; font-weight: bold">5</span> <span style="color: #333333">+</span> billHeight <span style="color: #333333">&amp;&amp;</span>onceOnly <span style="color: #333333">==</span> <span style="color: #008800; font-weight: bold">false</span><span style="color: #333333">)</span> <span style="color: #333333">{</span><span style="color: #888888">//when press 10 dollar image</span>
+    
+      totalAmount <span style="color: #333333">=</span> totalAmount <span style="color: #333333">+</span> moneyAmount<span style="color: #333333">[</span><span style="color: #0000DD; font-weight: bold">6</span><span style="color: #333333">];</span><span style="color: #888888">//total amount adds up by 1.00</span>
+      onceOnly <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">true</span><span style="color: #333333">;</span><span style="color: #888888">//Boolean so the button is not looping while it being pressed</span>
+      
+    <span style="color: #333333">}</span> <span style="color: #008800; font-weight: bold">else</span> <span style="color: #008800; font-weight: bold">if</span> <span style="color: #333333">(</span>mouseX <span style="color: #333333">&gt;</span> defaultX <span style="color: #333333">+</span> <span style="color: #0000DD; font-weight: bold">600</span> <span style="color: #333333">&amp;&amp;</span> mouseX <span style="color: #333333">&lt;</span> defaultX <span style="color: #333333">+</span> <span style="color: #0000DD; font-weight: bold">600</span> <span style="color: #333333">+</span> billWidth <span style="color: #333333">&amp;&amp;</span> mouseY <span style="color: #333333">&lt;</span> defaultY <span style="color: #333333">*</span> <span style="color: #0000DD; font-weight: bold">5</span> <span style="color: #333333">+</span> billHeight <span style="color: #333333">&amp;&amp;</span> onceOnly <span style="color: #333333">==</span> <span style="color: #008800; font-weight: bold">false</span><span style="color: #333333">)</span> <span style="color: #333333">{</span><span style="color: #888888">//when press 20 dollar image</span>
+    
+      totalAmount <span style="color: #333333">=</span> totalAmount <span style="color: #333333">+</span> moneyAmount<span style="color: #333333">[</span><span style="color: #0000DD; font-weight: bold">7</span><span style="color: #333333">];</span><span style="color: #888888">//total amount adds up by 1.00</span>
+      onceOnly <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">true</span><span style="color: #333333">;</span><span style="color: #888888">//Boolean so the button is not looping while it being pressed</span>
+      
+    <span style="color: #333333">}</span> <span style="color: #008800; font-weight: bold">else</span> <span style="color: #008800; font-weight: bold">if</span> <span style="color: #333333">(</span>mouseX <span style="color: #333333">&gt;</span> defaultX <span style="color: #333333">+</span> <span style="color: #0000DD; font-weight: bold">900</span> <span style="color: #333333">&amp;&amp;</span> mouseX <span style="color: #333333">&lt;</span> defaultX <span style="color: #333333">+</span> <span style="color: #0000DD; font-weight: bold">900</span> <span style="color: #333333">+</span> billWidth <span style="color: #333333">&amp;&amp;</span> mouseY <span style="color: #333333">&lt;</span> defaultY <span style="color: #333333">*</span> <span style="color: #0000DD; font-weight: bold">5</span> <span style="color: #333333">+</span> billHeight <span style="color: #333333">&amp;&amp;</span> onceOnly <span style="color: #333333">==</span> <span style="color: #008800; font-weight: bold">false</span><span style="color: #333333">)</span> <span style="color: #333333">{</span><span style="color: #888888">//when press 50 dollar image</span>
+    
+      totalAmount <span style="color: #333333">=</span> totalAmount <span style="color: #333333">+</span> moneyAmount<span style="color: #333333">[</span><span style="color: #0000DD; font-weight: bold">8</span><span style="color: #333333">];</span><span style="color: #888888">//total amount adds up by 1.00</span>
+      onceOnly <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">true</span><span style="color: #333333">;</span><span style="color: #888888">//Boolean so the button is not looping while it being pressed</span>
+      
+    <span style="color: #333333">}</span> <span style="color: #008800; font-weight: bold">else</span> <span style="color: #008800; font-weight: bold">if</span> <span style="color: #333333">(</span>mouseX <span style="color: #333333">&gt;</span> defaultX <span style="color: #333333">+</span> <span style="color: #0000DD; font-weight: bold">1200</span> <span style="color: #333333">&amp;&amp;</span> mouseX <span style="color: #333333">&lt;</span> defaultX <span style="color: #333333">+</span> <span style="color: #0000DD; font-weight: bold">1200</span> <span style="color: #333333">+</span> billWidth <span style="color: #333333">&amp;&amp;</span> mouseY <span style="color: #333333">&lt;</span> defaultY <span style="color: #333333">*</span> <span style="color: #0000DD; font-weight: bold">5</span> <span style="color: #333333">+</span> billHeight <span style="color: #333333">&amp;&amp;</span> onceOnly <span style="color: #333333">==</span> <span style="color: #008800; font-weight: bold">false</span><span style="color: #333333">)</span> <span style="color: #333333">{</span><span style="color: #888888">//when press 100 dollar image</span>
+    
+      totalAmount <span style="color: #333333">=</span> totalAmount <span style="color: #333333">+</span> moneyAmount<span style="color: #333333">[</span><span style="color: #0000DD; font-weight: bold">9</span><span style="color: #333333">];</span><span style="color: #888888">//total amount adds up by 1.00</span>
+      onceOnly <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">true</span><span style="color: #333333">;</span><span style="color: #888888">//Boolean so the button is not looping while it being pressed</span>
+      
+    <span style="color: #333333">}</span> 
+      
+  <span style="color: #333333">}</span>
+  
+  <span style="color: #888888">//displays the text of telling the total amount</span>
+  fill<span style="color: #333333">(</span><span style="color: #FF0000; background-color: #FFAAAA">#</span><span style="color: #0000DD; font-weight: bold">000000</span><span style="color: #333333">);</span>
+  textSize<span style="color: #333333">(</span><span style="color: #0000DD; font-weight: bold">32</span><span style="color: #333333">);</span>
+  textAlign<span style="color: #333333">(</span>CENTER<span style="color: #333333">);</span>
+  text<span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;Total Amount: $&quot;</span> <span style="color: #333333">+</span> nf<span style="color: #333333">(</span>totalAmount<span style="color: #333333">,</span> <span style="color: #0000DD; font-weight: bold">0</span><span style="color: #333333">,</span> <span style="color: #0000DD; font-weight: bold">2</span><span style="color: #333333">),</span> width<span style="color: #333333">/</span><span style="color: #0000DD; font-weight: bold">2</span><span style="color: #333333">,</span> <span style="color: #0000DD; font-weight: bold">1000</span><span style="color: #333333">);</span>
+  
+<span style="color: #333333">}</span>
+
+<span style="color: #333399; font-weight: bold">void</span> <span style="color: #0066BB; font-weight: bold">drawCoins</span><span style="color: #333333">(){</span>
+  
+   <span style="color: #888888">//displaying each images of coins</span>
+  <span style="color: #008800; font-weight: bold">for</span><span style="color: #333333">(</span><span style="color: #333399; font-weight: bold">int</span> i <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span><span style="color: #333333">;</span> i <span style="color: #333333">&lt;</span> <span style="color: #0000DD; font-weight: bold">5</span><span style="color: #333333">;</span> i<span style="color: #333333">++){</span><span style="color: #888888">//Position of the images (coins)</span>
+    image<span style="color: #333333">(</span>coinPictures<span style="color: #333333">[</span>i<span style="color: #333333">],</span> defaultX <span style="color: #333333">+</span> <span style="color: #0000DD; font-weight: bold">300</span> <span style="color: #333333">*</span> i<span style="color: #333333">,</span> defaultY<span style="color: #333333">,</span> coinDiameter<span style="color: #333333">,</span> coinDiameter<span style="color: #333333">);</span>
+  <span style="color: #333333">}</span>
+  
+<span style="color: #333333">}</span>
+
+<span style="color: #333399; font-weight: bold">void</span> <span style="color: #0066BB; font-weight: bold">drawBills</span><span style="color: #333333">(){</span>
+  
+  <span style="color: #888888">//displaying each images of bills</span>
+  <span style="color: #008800; font-weight: bold">for</span><span style="color: #333333">(</span><span style="color: #333399; font-weight: bold">int</span> i <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span><span style="color: #333333">;</span> i <span style="color: #333333">&lt;</span> <span style="color: #0000DD; font-weight: bold">5</span><span style="color: #333333">;</span> i<span style="color: #333333">++){</span><span style="color: #888888">//Position of the images (bills)</span>
+    image<span style="color: #333333">(</span>billPictures<span style="color: #333333">[</span>i<span style="color: #333333">],</span> defaultX <span style="color: #333333">+</span> <span style="color: #0000DD; font-weight: bold">300</span> <span style="color: #333333">*</span> i<span style="color: #333333">,</span> defaultY <span style="color: #333333">*</span> <span style="color: #0000DD; font-weight: bold">5</span><span style="color: #333333">,</span> billWidth<span style="color: #333333">,</span> billHeight<span style="color: #333333">);</span>
+  <span style="color: #333333">}</span>
+<span style="color: #333333">}</span>
+
+<span style="color: #333399; font-weight: bold">void</span> <span style="color: #0066BB; font-weight: bold">mouseReleased</span><span style="color: #333333">()</span> <span style="color: #333333">{</span><span style="color: #888888">//when release mouse</span>
+    
+  onceOnly <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">false</span><span style="color: #333333">;</span><span style="color: #888888">//So the button can&#39;t loop while it being pressed</span>
+    
+<span style="color: #333333">}</span>
+</pre></td></tr></table></div>
+						</div>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+						<hr>
+						<div id="hilite-adjust">
+						<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">  1
+  2
+  3
+  4
+  5
+  6
+  7
+  8
+  9
+ 10
+ 11
+ 12
+ 13
+ 14
+ 15
+ 16
+ 17
+ 18
+ 19
+ 20
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59
+ 60
+ 61
+ 62
+ 63
+ 64
+ 65
+ 66
+ 67
+ 68
+ 69
+ 70
+ 71
+ 72
+ 73
+ 74
+ 75
+ 76
+ 77
+ 78
+ 79
+ 80
+ 81
+ 82
+ 83
+ 84
+ 85
+ 86
+ 87
+ 88
+ 89
+ 90
+ 91
+ 92
+ 93
+ 94
+ 95
+ 96
+ 97
+ 98
+ 99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363
+364
+365
+366
+367
+368
+369
+370
+371
+372
+373
+374
+375
+376
+377
+378
+379
+380
+381
+382
+383
+384
+385
+386
+387
+388
+389
+390
+391
+392
+393
+394
+395
+396
+397
+398
+399
+400
+401
+402
+403
+404
+405
+406
+407
+408
+409
+410
+411
+412
+413
+414
+415
+416
+417
+418
+419
+420
+421
+422
+423
+424
+425
+426
+427
+428
+429
+430
+431
+432
+433
+434
+435
+436
+437
+438
+439
+440
+441
+442
+443
+444
+445
+446
+447
+448
+449
+450
+451
+452
+453
+454
+455
+456
+457
+458
+459
+460
+461
+462
+463
+464
+465
+466
+467
+468
+469
+470
+471
+472
+473
+474
+475
+476
+477
+478
+479
+480
+481
+482
+483
+484
+485
+486
+487
+488
+489
+490
+491
+492
+493
+494
+495
+496
+497</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #888888">//Note:Please install PressStart2P.ttf in the file for the 8 bit font</span>
+
+<span style="color: #333399; font-weight: bold">int</span> fps<span style="color: #333333">;</span><span style="color: #888888">//fps value</span>
+PImage cursor<span style="color: #333333">;</span><span style="color: #888888">//custom cursor image</span>
+<span style="color: #333399; font-weight: bold">int</span> screenMode<span style="color: #333333">;</span><span style="color: #888888">//screen modes for the game</span>
+<span style="color: #333399; font-weight: bold">float</span> soloBallDirection<span style="color: #333333">;</span><span style="color: #888888">//to decide where the ball is going at the start of the game (Practice)</span>
+<span style="color: #333399; font-weight: bold">float</span> duoBallDirection<span style="color: #333333">;</span><span style="color: #888888">//to decide where the ball is going at the start of the game (1v1)</span>
+<span style="color: #333399; font-weight: bold">boolean</span> ballActivate<span style="color: #333333">;</span><span style="color: #888888">//boolean for activating movement of the ball</span>
+<span style="color: #333399; font-weight: bold">float</span> ballSpeed<span style="color: #333333">;</span><span style="color: #888888">//Default speed of the ball</span>
+<span style="color: #333399; font-weight: bold">boolean</span> leftWall<span style="color: #333333">;</span><span style="color: #888888">//To make the ball bounce off the right/left wall</span>
+<span style="color: #333399; font-weight: bold">boolean</span> topWall<span style="color: #333333">,</span> bottomWall<span style="color: #333333">;</span><span style="color: #888888">//To make the ball bounce off the top/bottom wall</span>
+<span style="color: #333399; font-weight: bold">boolean</span> leftSideRacket<span style="color: #333333">,</span> rightSideRacket<span style="color: #333333">;</span><span style="color: #888888">//To make the ball bounce off the right/left racket</span>
+<span style="color: #333399; font-weight: bold">int</span> rightSideRacketY<span style="color: #333333">;</span><span style="color: #888888">//Default Y position of the right side racket</span>
+<span style="color: #333399; font-weight: bold">int</span> leftSideRacketY<span style="color: #333333">;</span><span style="color: #888888">//Default X position of the right side racket</span>
+<span style="color: #333399; font-weight: bold">int</span> ballX<span style="color: #333333">,</span> ballY<span style="color: #333333">;</span><span style="color: #888888">//Position of the ballket</span>
+<span style="color: #333399; font-weight: bold">int</span> rightSideRacketBottom<span style="color: #333333">;</span><span style="color: #888888">//Bottom of the rigth side racket</span>
+<span style="color: #333399; font-weight: bold">int</span> leftSideRacketBottom<span style="color: #333333">;</span><span style="color: #888888">//Bottom of the left side racket</span>
+<span style="color: #333399; font-weight: bold">boolean</span><span style="color: #333333">[]</span> racketKeys<span style="color: #333333">;</span><span style="color: #888888">//boolean for keyPressed cases</span>
+PFont pixelFont<span style="color: #333333">;</span><span style="color: #888888">//Press Start 2P</span>
+<span style="color: #333399; font-weight: bold">int</span> leftScore<span style="color: #333333">;</span><span style="color: #888888">//left side player score</span>
+<span style="color: #333399; font-weight: bold">int</span> rightScore<span style="color: #333333">;</span><span style="color: #888888">//right side player score</span>
+<span style="color: #333399; font-weight: bold">int</span> counterMillis <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span><span style="color: #333333">;</span><span style="color: #888888">//Milliseconds for the countdown timer</span>
+<span style="color: #333399; font-weight: bold">int</span> counterSeconds <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">3</span><span style="color: #333333">;</span><span style="color: #888888">//Seconds for the countdown timer</span>
+<span style="color: #333399; font-weight: bold">int</span> gameOverMode<span style="color: #333333">;</span><span style="color: #888888">//screen mode when games over for different cases</span>
+
+<span style="color: #333399; font-weight: bold">void</span> <span style="color: #0066BB; font-weight: bold">setup</span><span style="color: #333333">()</span> <span style="color: #333333">{</span><span style="color: #888888">//set up</span>
+  fullScreen<span style="color: #333333">();</span><span style="color: #888888">//makes the program full screen sized.</span>
+  fps <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">60</span><span style="color: #333333">;</span>
+  cursor <span style="color: #333333">=</span> loadImage<span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;rainbowcursor.png&quot;</span><span style="color: #333333">);</span><span style="color: #888888">//custom cursor image</span>
+  cursor<span style="color: #333333">(</span>cursor<span style="color: #333333">);</span><span style="color: #888888">//Cross cursor</span>
+  frameRate<span style="color: #333333">(</span>fps<span style="color: #333333">);</span><span style="color: #888888">//FPS</span>
+  smooth<span style="color: #333333">(</span><span style="color: #0000DD; font-weight: bold">2</span><span style="color: #333333">);</span><span style="color: #888888">//Smoothening the motion</span>
+  screenMode <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">1</span><span style="color: #333333">;</span><span style="color: #888888">//program starts with lobby screen</span>
+  ballActivate <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">false</span><span style="color: #333333">;</span><span style="color: #888888">//ball doesn&#39;t move until it&#39;s true</span>
+  leftWall <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">false</span><span style="color: #333333">;</span>
+  topWall <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">false</span><span style="color: #333333">;</span>
+  bottomWall <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">false</span><span style="color: #333333">;</span>
+  leftSideRacket <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">false</span><span style="color: #333333">;</span>
+  rightSideRacket <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">false</span><span style="color: #333333">;</span>
+  ballSpeed <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">5</span><span style="color: #333333">;</span><span style="color: #888888">//default ball speed</span>
+  ballX <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">960</span><span style="color: #333333">;</span><span style="color: #888888">//Ball spawn location (x)</span>
+  ballY <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">540</span><span style="color: #333333">;</span><span style="color: #888888">//Ball spawn location (y)</span>
+  rightSideRacketY <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">1080</span> <span style="color: #333333">/</span> <span style="color: #0000DD; font-weight: bold">2</span> <span style="color: #333333">-</span> <span style="color: #0000DD; font-weight: bold">90</span><span style="color: #333333">;</span>
+  leftSideRacketY <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">1080</span> <span style="color: #333333">/</span> <span style="color: #0000DD; font-weight: bold">2</span> <span style="color: #333333">-</span> <span style="color: #0000DD; font-weight: bold">90</span><span style="color: #333333">;</span>
+  racketKeys<span style="color: #333333">=</span><span style="color: #008800; font-weight: bold">new</span> <span style="color: #333399; font-weight: bold">boolean</span><span style="color: #333333">[</span><span style="color: #0000DD; font-weight: bold">4</span><span style="color: #333333">];</span><span style="color: #888888">//boolean for controlling rackets</span>
+  racketKeys<span style="color: #333333">[</span><span style="color: #0000DD; font-weight: bold">0</span><span style="color: #333333">]=</span><span style="color: #008800; font-weight: bold">false</span><span style="color: #333333">;</span><span style="color: #888888">//Up key</span>
+  racketKeys<span style="color: #333333">[</span><span style="color: #0000DD; font-weight: bold">1</span><span style="color: #333333">]=</span><span style="color: #008800; font-weight: bold">false</span><span style="color: #333333">;</span><span style="color: #888888">//Down key</span>
+  racketKeys<span style="color: #333333">[</span><span style="color: #0000DD; font-weight: bold">2</span><span style="color: #333333">]=</span><span style="color: #008800; font-weight: bold">false</span><span style="color: #333333">;</span><span style="color: #888888">//W key</span>
+  racketKeys<span style="color: #333333">[</span><span style="color: #0000DD; font-weight: bold">3</span><span style="color: #333333">]=</span><span style="color: #008800; font-weight: bold">false</span><span style="color: #333333">;</span><span style="color: #888888">//S key</span>
+  leftScore <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span><span style="color: #333333">;</span>
+  rightScore <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span><span style="color: #333333">;</span>
+  counterMillis <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span><span style="color: #333333">;</span>
+  counterSeconds <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">3</span><span style="color: #333333">;</span>
+  gameOverMode <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span><span style="color: #333333">;</span>
+<span style="color: #333333">}</span>
+
+<span style="color: #333399; font-weight: bold">void</span> <span style="color: #0066BB; font-weight: bold">draw</span><span style="color: #333333">()</span> <span style="color: #333333">{</span><span style="color: #888888">//draw</span>
+  
+  <span style="color: #888888">//Lobby screen</span>
+  <span style="color: #008800; font-weight: bold">if</span> <span style="color: #333333">(</span>screenMode <span style="color: #333333">==</span> <span style="color: #0000DD; font-weight: bold">1</span><span style="color: #333333">){</span>
+    
+    lobby<span style="color: #333333">();</span><span style="color: #888888">//function for the lobby</span>
+    
+  <span style="color: #333333">}</span>
+  
+  <span style="color: #888888">//1 player mode (Practice mode)</span>
+  <span style="color: #008800; font-weight: bold">else</span> <span style="color: #0066BB; font-weight: bold">if</span> <span style="color: #333333">(</span>screenMode <span style="color: #333333">==</span> <span style="color: #0000DD; font-weight: bold">2</span><span style="color: #333333">){</span>
+    
+    practiceMode<span style="color: #333333">();</span><span style="color: #888888">//function for practice mode</span>
+    
+  <span style="color: #333333">}</span>
+  
+  <span style="color: #888888">//2 player mode (1v1)</span>
+  <span style="color: #008800; font-weight: bold">else</span> <span style="color: #0066BB; font-weight: bold">if</span> <span style="color: #333333">(</span>screenMode <span style="color: #333333">==</span> <span style="color: #0000DD; font-weight: bold">3</span><span style="color: #333333">){</span>
+    
+    oneVOneMode<span style="color: #333333">();</span><span style="color: #888888">//function for 1v1 mode</span>
+    
+  <span style="color: #333333">}</span>
+  
+  <span style="color: #888888">//Game over</span>
+  <span style="color: #008800; font-weight: bold">else</span> <span style="color: #0066BB; font-weight: bold">if</span> <span style="color: #333333">(</span>screenMode <span style="color: #333333">==</span> <span style="color: #0000DD; font-weight: bold">4</span><span style="color: #333333">){</span>
+    
+    gameOver<span style="color: #333333">();</span><span style="color: #888888">//function for game mover screen</span>
+    
+  <span style="color: #333333">}</span>
+<span style="color: #333333">}</span>
+
+<span style="color: #333399; font-weight: bold">void</span> <span style="color: #0066BB; font-weight: bold">keyPressed</span><span style="color: #333333">()</span> <span style="color: #333333">{</span><span style="color: #888888">//Key Pressed function</span>
+  <span style="color: #008800; font-weight: bold">if</span> <span style="color: #333333">(</span>keyCode <span style="color: #333333">==</span> UP<span style="color: #333333">)</span> <span style="color: #333333">{</span><span style="color: #888888">//When user press Up</span>
+    
+    racketKeys<span style="color: #333333">[</span><span style="color: #0000DD; font-weight: bold">0</span><span style="color: #333333">]=</span><span style="color: #008800; font-weight: bold">true</span><span style="color: #333333">;</span>
+    
+  <span style="color: #333333">}</span> <span style="color: #008800; font-weight: bold">if</span> <span style="color: #333333">(</span>keyCode <span style="color: #333333">==</span> DOWN<span style="color: #333333">)</span> <span style="color: #333333">{</span><span style="color: #888888">//When user press Down</span>
+    
+    racketKeys<span style="color: #333333">[</span><span style="color: #0000DD; font-weight: bold">1</span><span style="color: #333333">]=</span><span style="color: #008800; font-weight: bold">true</span><span style="color: #333333">;</span>
+    
+  <span style="color: #333333">}</span> <span style="color: #008800; font-weight: bold">if</span> <span style="color: #333333">(</span>key <span style="color: #333333">==</span> <span style="color: #0044DD">&#39;W&#39;</span> <span style="color: #333333">||</span> key <span style="color: #333333">==</span> <span style="color: #0044DD">&#39;w&#39;</span><span style="color: #333333">)</span> <span style="color: #333333">{</span><span style="color: #888888">//When user press w</span>
+    
+    racketKeys<span style="color: #333333">[</span><span style="color: #0000DD; font-weight: bold">2</span><span style="color: #333333">]=</span><span style="color: #008800; font-weight: bold">true</span><span style="color: #333333">;</span>
+    
+  <span style="color: #333333">}</span> <span style="color: #008800; font-weight: bold">if</span> <span style="color: #333333">(</span>key <span style="color: #333333">==</span> <span style="color: #0044DD">&#39;S&#39;</span> <span style="color: #333333">||</span> key <span style="color: #333333">==</span> <span style="color: #0044DD">&#39;s&#39;</span><span style="color: #333333">)</span> <span style="color: #333333">{</span><span style="color: #888888">//When user press s</span>
+    
+    racketKeys<span style="color: #333333">[</span><span style="color: #0000DD; font-weight: bold">3</span><span style="color: #333333">]=</span><span style="color: #008800; font-weight: bold">true</span><span style="color: #333333">;</span>
+    
+  <span style="color: #333333">}</span>
+<span style="color: #333333">}</span>
+
+<span style="color: #333399; font-weight: bold">void</span> <span style="color: #0066BB; font-weight: bold">keyReleased</span><span style="color: #333333">()</span> <span style="color: #333333">{</span><span style="color: #888888">//Key Released function</span>
+  <span style="color: #008800; font-weight: bold">if</span> <span style="color: #333333">(</span>keyCode <span style="color: #333333">==</span> UP<span style="color: #333333">)</span> <span style="color: #333333">{</span><span style="color: #888888">//When user release Up</span>
+    
+    racketKeys<span style="color: #333333">[</span><span style="color: #0000DD; font-weight: bold">0</span><span style="color: #333333">]=</span><span style="color: #008800; font-weight: bold">false</span><span style="color: #333333">;</span>
+    
+  <span style="color: #333333">}</span> <span style="color: #008800; font-weight: bold">if</span> <span style="color: #333333">(</span>keyCode <span style="color: #333333">==</span> DOWN<span style="color: #333333">)</span> <span style="color: #333333">{</span><span style="color: #888888">//When user release Up</span>
+    
+    racketKeys<span style="color: #333333">[</span><span style="color: #0000DD; font-weight: bold">1</span><span style="color: #333333">]=</span><span style="color: #008800; font-weight: bold">false</span><span style="color: #333333">;</span>
+    
+  <span style="color: #333333">}</span> <span style="color: #008800; font-weight: bold">if</span> <span style="color: #333333">(</span>key <span style="color: #333333">==</span> <span style="color: #0044DD">&#39;W&#39;</span> <span style="color: #333333">||</span> key <span style="color: #333333">==</span> <span style="color: #0044DD">&#39;w&#39;</span><span style="color: #333333">)</span> <span style="color: #333333">{</span><span style="color: #888888">//When user release Up</span>
+    
+    racketKeys<span style="color: #333333">[</span><span style="color: #0000DD; font-weight: bold">2</span><span style="color: #333333">]=</span><span style="color: #008800; font-weight: bold">false</span><span style="color: #333333">;</span>
+    
+  <span style="color: #333333">}</span> <span style="color: #008800; font-weight: bold">if</span> <span style="color: #333333">(</span>key <span style="color: #333333">==</span> <span style="color: #0044DD">&#39;S&#39;</span> <span style="color: #333333">||</span> key <span style="color: #333333">==</span> <span style="color: #0044DD">&#39;s&#39;</span><span style="color: #333333">)</span> <span style="color: #333333">{</span><span style="color: #888888">//When user release Up</span>
+    
+    racketKeys<span style="color: #333333">[</span><span style="color: #0000DD; font-weight: bold">3</span><span style="color: #333333">]=</span><span style="color: #008800; font-weight: bold">false</span><span style="color: #333333">;</span>
+    
+  <span style="color: #333333">}</span>
+  
+<span style="color: #333333">}</span>
+
+<span style="color: #333399; font-weight: bold">void</span> <span style="color: #0066BB; font-weight: bold">lobby</span><span style="color: #333333">()</span> <span style="color: #333333">{</span>
+  
+  background<span style="color: #333333">(</span><span style="color: #FF0000; background-color: #FFAAAA">#</span><span style="color: #0000DD; font-weight: bold">000000</span><span style="color: #333333">);</span><span style="color: #888888">//black background</span>
+  <span style="color: #888888">//PONG</span>
+  pixelFont <span style="color: #333333">=</span> createFont<span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;Press Start 2P&quot;</span><span style="color: #333333">,</span> <span style="color: #0000DD; font-weight: bold">200</span><span style="color: #333333">);</span>
+  fill<span style="color: #333333">(</span><span style="color: #FF0000; background-color: #FFAAAA">#</span><span style="color: #0000DD; font-weight: bold">39</span>FF14<span style="color: #333333">);</span>
+  textFont<span style="color: #333333">(</span>pixelFont<span style="color: #333333">);</span>
+  textAlign<span style="color: #333333">(</span>CENTER<span style="color: #333333">,</span> CENTER<span style="color: #333333">);</span>
+  text<span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;PONG&quot;</span><span style="color: #333333">,</span> <span style="color: #0000DD; font-weight: bold">960</span><span style="color: #333333">,</span> <span style="color: #0000DD; font-weight: bold">400</span><span style="color: #333333">);</span><span style="color: #888888">//title</span>
+  
+  <span style="color: #888888">//Button 1(practice)</span>
+  fill<span style="color: #333333">(</span><span style="color: #FF0000; background-color: #FFAAAA">#</span><span style="color: #0000DD; font-weight: bold">39</span>FF14<span style="color: #333333">);</span>
+  rect<span style="color: #333333">(</span><span style="color: #0000DD; font-weight: bold">400</span><span style="color: #333333">,</span> <span style="color: #0000DD; font-weight: bold">600</span><span style="color: #333333">,</span> <span style="color: #0000DD; font-weight: bold">500</span><span style="color: #333333">,</span> <span style="color: #0000DD; font-weight: bold">300</span><span style="color: #333333">,</span> <span style="color: #0000DD; font-weight: bold">7</span><span style="color: #333333">);</span><span style="color: #888888">//Button for practice mode</span>
+  fill<span style="color: #333333">(</span><span style="color: #FF0000; background-color: #FFAAAA">#</span><span style="color: #0000DD; font-weight: bold">000000</span><span style="color: #333333">);</span>
+  pixelFont <span style="color: #333333">=</span> createFont<span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;Press Start 2P&quot;</span><span style="color: #333333">,</span> <span style="color: #0000DD; font-weight: bold">30</span><span style="color: #333333">);</span>
+  textFont<span style="color: #333333">(</span>pixelFont<span style="color: #333333">);</span>
+  textAlign<span style="color: #333333">(</span>CENTER<span style="color: #333333">,</span> CENTER<span style="color: #333333">);</span>
+  text<span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;Practice Mode&quot;</span><span style="color: #333333">,</span> <span style="color: #0000DD; font-weight: bold">650</span><span style="color: #333333">,</span> <span style="color: #0000DD; font-weight: bold">750</span><span style="color: #333333">);</span>
+  <span style="color: #888888">//button 2(1v1)</span>
+  fill<span style="color: #333333">(</span><span style="color: #FF0000; background-color: #FFAAAA">#</span><span style="color: #0000DD; font-weight: bold">39</span>FF14<span style="color: #333333">);</span>
+  rect<span style="color: #333333">(</span><span style="color: #0000DD; font-weight: bold">1020</span><span style="color: #333333">,</span> <span style="color: #0000DD; font-weight: bold">600</span><span style="color: #333333">,</span> <span style="color: #0000DD; font-weight: bold">500</span><span style="color: #333333">,</span> <span style="color: #0000DD; font-weight: bold">300</span><span style="color: #333333">,</span> <span style="color: #0000DD; font-weight: bold">7</span><span style="color: #333333">);</span><span style="color: #888888">//Button for 1v1 mode</span>
+  fill<span style="color: #333333">(</span><span style="color: #FF0000; background-color: #FFAAAA">#</span><span style="color: #0000DD; font-weight: bold">000000</span><span style="color: #333333">);</span>
+  pixelFont <span style="color: #333333">=</span> createFont<span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;Press Start 2P&quot;</span><span style="color: #333333">,</span> <span style="color: #0000DD; font-weight: bold">30</span><span style="color: #333333">);</span>
+  textFont<span style="color: #333333">(</span>pixelFont<span style="color: #333333">);</span>
+  textAlign<span style="color: #333333">(</span>CENTER<span style="color: #333333">,</span> CENTER<span style="color: #333333">);</span>
+  text<span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;1v1 Mode&quot;</span><span style="color: #333333">,</span> <span style="color: #0000DD; font-weight: bold">1270</span><span style="color: #333333">,</span> <span style="color: #0000DD; font-weight: bold">750</span><span style="color: #333333">);</span>
+    
+  <span style="color: #008800; font-weight: bold">if</span> <span style="color: #333333">(</span>mousePressed<span style="color: #333333">)</span> <span style="color: #333333">{</span><span style="color: #888888">//Mouse pressed</span>
+      
+    <span style="color: #008800; font-weight: bold">if</span> <span style="color: #333333">(</span>mouseX <span style="color: #333333">&gt;</span> <span style="color: #0000DD; font-weight: bold">400</span> <span style="color: #333333">&amp;&amp;</span> mouseX <span style="color: #333333">&lt;</span> <span style="color: #0000DD; font-weight: bold">400</span> <span style="color: #333333">+</span> <span style="color: #0000DD; font-weight: bold">500</span> <span style="color: #333333">&amp;&amp;</span> mouseY <span style="color: #333333">&gt;</span> <span style="color: #0000DD; font-weight: bold">600</span> <span style="color: #333333">&amp;&amp;</span> mouseY <span style="color: #333333">&lt;</span> <span style="color: #0000DD; font-weight: bold">600</span> <span style="color: #333333">+</span> <span style="color: #0000DD; font-weight: bold">300</span><span style="color: #333333">)</span> <span style="color: #333333">{</span><span style="color: #888888">//When user clicks the left button(practice mode)</span>
+      screenMode <span style="color: #333333">+=</span> <span style="color: #0000DD; font-weight: bold">1</span><span style="color: #333333">;</span><span style="color: #888888">//loads up the practice mode</span>
+    <span style="color: #333333">}</span> <span style="color: #008800; font-weight: bold">else</span> <span style="color: #008800; font-weight: bold">if</span> <span style="color: #333333">(</span>mouseX <span style="color: #333333">&gt;</span> <span style="color: #0000DD; font-weight: bold">1020</span> <span style="color: #333333">&amp;&amp;</span> mouseX <span style="color: #333333">&lt;</span> <span style="color: #0000DD; font-weight: bold">1020</span> <span style="color: #333333">+</span> <span style="color: #0000DD; font-weight: bold">500</span> <span style="color: #333333">&amp;&amp;</span> mouseY <span style="color: #333333">&gt;</span> <span style="color: #0000DD; font-weight: bold">600</span> <span style="color: #333333">&amp;&amp;</span> mouseY <span style="color: #333333">&lt;</span> <span style="color: #0000DD; font-weight: bold">600</span> <span style="color: #333333">+</span> <span style="color: #0000DD; font-weight: bold">300</span><span style="color: #333333">)</span> <span style="color: #333333">{</span><span style="color: #888888">//When user clicks the right button(1v1)</span>
+      screenMode <span style="color: #333333">+=</span> <span style="color: #0000DD; font-weight: bold">2</span><span style="color: #333333">;</span><span style="color: #888888">//loads up the 1v1 mode</span>
+    <span style="color: #333333">}</span>
+      
+  <span style="color: #333333">}</span>
+ 
+<span style="color: #333333">}</span>
+
+<span style="color: #333399; font-weight: bold">void</span> <span style="color: #0066BB; font-weight: bold">practiceMode</span><span style="color: #333333">()</span> <span style="color: #333333">{</span>
+  
+  background<span style="color: #333333">(</span><span style="color: #FF0000; background-color: #FFAAAA">#</span><span style="color: #0000DD; font-weight: bold">000000</span><span style="color: #333333">);</span><span style="color: #888888">//black background</span>
+  fill<span style="color: #333333">(</span><span style="color: #FF0000; background-color: #FFAAAA">#</span><span style="color: #0000DD; font-weight: bold">39</span>FF14<span style="color: #333333">);</span><span style="color: #888888">//line colour</span>
+  rect<span style="color: #333333">(</span>width <span style="color: #333333">/</span> <span style="color: #0000DD; font-weight: bold">2</span> <span style="color: #333333">-</span> <span style="color: #0000DD; font-weight: bold">8</span><span style="color: #333333">,</span> <span style="color: #0000DD; font-weight: bold">0</span><span style="color: #333333">,</span> <span style="color: #0000DD; font-weight: bold">16</span><span style="color: #333333">,</span> <span style="color: #0000DD; font-weight: bold">1080</span><span style="color: #333333">);</span><span style="color: #888888">//the centre line</span>
+  fill<span style="color: #333333">(</span><span style="color: #FF0000; background-color: #FFAAAA">#</span><span style="color: #0000DD; font-weight: bold">39</span>FF14<span style="color: #333333">);</span><span style="color: #888888">//ball colour</span>
+  ellipse<span style="color: #333333">(</span>ballX<span style="color: #333333">,</span> ballY<span style="color: #333333">,</span> <span style="color: #0000DD; font-weight: bold">30</span><span style="color: #333333">,</span> <span style="color: #0000DD; font-weight: bold">30</span><span style="color: #333333">);</span><span style="color: #888888">//the ball</span>
+  fill<span style="color: #333333">(</span><span style="color: #FF0000; background-color: #FFAAAA">#</span><span style="color: #0000DD; font-weight: bold">39</span>FF14<span style="color: #333333">);</span><span style="color: #888888">//left side wall colour</span>
+  rect<span style="color: #333333">(</span><span style="color: #0000DD; font-weight: bold">0</span><span style="color: #333333">,</span> <span style="color: #0000DD; font-weight: bold">0</span><span style="color: #333333">,</span> <span style="color: #0000DD; font-weight: bold">16</span><span style="color: #333333">,</span> <span style="color: #0000DD; font-weight: bold">1080</span><span style="color: #333333">);</span><span style="color: #888888">//left side wall</span>
+  fill<span style="color: #333333">(</span><span style="color: #FF0000; background-color: #FFAAAA">#</span><span style="color: #0000DD; font-weight: bold">39</span>FF14<span style="color: #333333">);</span><span style="color: #888888">//right side racket colour</span>
+  rect<span style="color: #333333">(</span><span style="color: #0000DD; font-weight: bold">1904</span><span style="color: #333333">,</span> rightSideRacketY<span style="color: #333333">,</span> <span style="color: #0000DD; font-weight: bold">16</span><span style="color: #333333">,</span> <span style="color: #0000DD; font-weight: bold">180</span><span style="color: #333333">);</span><span style="color: #888888">//right side racket</span>
+  noCursor<span style="color: #333333">();</span><span style="color: #888888">//removes cursor</span>
+  
+  rightSideRacketBottom <span style="color: #333333">=</span> rightSideRacketY <span style="color: #333333">+</span> <span style="color: #0000DD; font-weight: bold">180</span><span style="color: #333333">;</span><span style="color: #888888">//The value of the right side racket bottom</span>
+  startCountDown<span style="color: #333333">();</span><span style="color: #888888">//countdown before the game starts</span>
+  
+  <span style="color: #008800; font-weight: bold">if</span> <span style="color: #333333">(</span>ballActivate <span style="color: #333333">==</span> <span style="color: #008800; font-weight: bold">true</span><span style="color: #333333">)</span> <span style="color: #333333">{</span>
+    
+    <span style="color: #008800; font-weight: bold">if</span> <span style="color: #333333">(</span>soloBallDirection <span style="color: #333333">&gt;=</span> <span style="color: #0000DD; font-weight: bold">0</span> <span style="color: #333333">&amp;&amp;</span> soloBallDirection <span style="color: #333333">&lt;=</span> <span style="color: #0000DD; font-weight: bold">1</span><span style="color: #333333">)</span> <span style="color: #333333">{</span><span style="color: #888888">//When random number generator generates 0~1, ball goes up and to the right side at the start of the game</span>
+      
+      leftWall <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">true</span><span style="color: #333333">;</span>
+      topWall <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">true</span><span style="color: #333333">;</span>
+      soloBallDirection<span style="color: #333333">+=</span><span style="color: #0000DD; font-weight: bold">4</span><span style="color: #333333">;</span><span style="color: #888888">//cancel out the random after it&#39;s called</span>
+      
+    <span style="color: #333333">}</span> <span style="color: #008800; font-weight: bold">else</span> <span style="color: #008800; font-weight: bold">if</span> <span style="color: #333333">(</span>soloBallDirection <span style="color: #333333">&gt;=</span> <span style="color: #6600EE; font-weight: bold">1.0001</span> <span style="color: #333333">&amp;&amp;</span> soloBallDirection <span style="color: #333333">&lt;=</span> <span style="color: #0000DD; font-weight: bold">2</span><span style="color: #333333">)</span> <span style="color: #333333">{</span><span style="color: #888888">//When random number generator generates 1.0001~2, ball goes down and to the right side at the start of the game</span>
+      
+      leftWall <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">true</span><span style="color: #333333">;</span>
+      bottomWall <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">true</span><span style="color: #333333">;</span>
+      soloBallDirection<span style="color: #333333">+=</span><span style="color: #0000DD; font-weight: bold">4</span><span style="color: #333333">;</span><span style="color: #888888">//cancel out the random after it&#39;s called</span>
+      
+    <span style="color: #333333">}</span>
+    
+    <span style="color: #008800; font-weight: bold">if</span> <span style="color: #333333">(</span>ballX <span style="color: #333333">+</span> <span style="color: #0000DD; font-weight: bold">15</span> <span style="color: #333333">&gt;=</span> <span style="color: #0000DD; font-weight: bold">1904</span> <span style="color: #333333">&amp;&amp;</span> <span style="color: #333333">(</span>rightSideRacketY <span style="color: #333333">&lt;=</span> ballY <span style="color: #333333">&amp;&amp;</span> ballY <span style="color: #333333">&lt;=</span> rightSideRacketBottom<span style="color: #333333">))</span> <span style="color: #333333">{</span><span style="color: #888888">//The ball moves right until it bounces off the right racket</span>
+      rightSideRacket <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">true</span><span style="color: #333333">;</span>
+      leftWall <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">false</span><span style="color: #333333">;</span>
+      ballSpeed <span style="color: #333333">=</span> ballSpeed <span style="color: #333333">+</span> <span style="color: #333333">(</span>ballSpeed <span style="color: #333333">*</span> <span style="color: #6600EE; font-weight: bold">0.05</span><span style="color: #333333">);</span><span style="color: #888888">//ball speed increases </span>
+    <span style="color: #333333">}</span>
+     
+    <span style="color: #008800; font-weight: bold">else</span> <span style="color: #0066BB; font-weight: bold">if</span> <span style="color: #333333">(</span>ballX <span style="color: #333333">&gt;=</span> <span style="color: #0000DD; font-weight: bold">1910</span><span style="color: #333333">)</span> <span style="color: #333333">{</span><span style="color: #888888">//When user fails to bounce off the ball</span>
+      screenMode<span style="color: #333333">+=</span><span style="color: #0000DD; font-weight: bold">2</span><span style="color: #333333">;</span><span style="color: #888888">//game over screen</span>
+    <span style="color: #333333">}</span>
+     
+    <span style="color: #008800; font-weight: bold">if</span> <span style="color: #333333">(</span>ballX <span style="color: #333333">-</span> <span style="color: #0000DD; font-weight: bold">15</span> <span style="color: #333333">&lt;=</span> <span style="color: #0000DD; font-weight: bold">16</span><span style="color: #333333">)</span> <span style="color: #333333">{</span><span style="color: #888888">//The ball moves left until it bounces off the left wall</span>
+      leftWall <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">true</span><span style="color: #333333">;</span>
+      rightSideRacket <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">false</span><span style="color: #333333">;</span>
+      ballSpeed <span style="color: #333333">=</span> ballSpeed <span style="color: #333333">+</span> <span style="color: #333333">(</span>ballSpeed <span style="color: #333333">*</span> <span style="color: #6600EE; font-weight: bold">0.05</span><span style="color: #333333">);</span><span style="color: #888888">//ball speed increases </span>
+    <span style="color: #333333">}</span>
+  
+    <span style="color: #008800; font-weight: bold">if</span> <span style="color: #333333">(</span>rightSideRacket <span style="color: #333333">==</span> <span style="color: #008800; font-weight: bold">true</span><span style="color: #333333">)</span> <span style="color: #333333">{</span><span style="color: #888888">//To make the ball bounce off the right racket</span>
+     ballX<span style="color: #333333">-=</span>ballSpeed<span style="color: #333333">;</span>
+    <span style="color: #333333">}</span>
+  
+    <span style="color: #008800; font-weight: bold">if</span> <span style="color: #333333">(</span>leftWall <span style="color: #333333">==</span> <span style="color: #008800; font-weight: bold">true</span><span style="color: #333333">)</span> <span style="color: #333333">{</span><span style="color: #888888">//To make the ball bounce off the left wall</span>
+      ballX<span style="color: #333333">+=</span>ballSpeed<span style="color: #333333">;</span>
+    <span style="color: #333333">}</span>
+  
+    <span style="color: #008800; font-weight: bold">if</span> <span style="color: #333333">(</span>ballY <span style="color: #333333">+</span> <span style="color: #0000DD; font-weight: bold">15</span> <span style="color: #333333">&gt;=</span> height<span style="color: #333333">)</span> <span style="color: #333333">{</span><span style="color: #888888">//The ball moves down until it bounces off the top wall</span>
+      bottomWall <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">true</span><span style="color: #333333">;</span>
+      topWall <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">false</span><span style="color: #333333">;</span>
+    <span style="color: #333333">}</span>
+   
+    <span style="color: #008800; font-weight: bold">if</span> <span style="color: #333333">(</span>ballY <span style="color: #333333">-</span> <span style="color: #0000DD; font-weight: bold">15</span> <span style="color: #333333">&lt;=</span> <span style="color: #0000DD; font-weight: bold">0</span><span style="color: #333333">)</span> <span style="color: #333333">{</span><span style="color: #888888">//The ball moves down until it bounces off the bottom wall</span>
+      topWall <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">true</span><span style="color: #333333">;</span>
+      bottomWall <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">false</span><span style="color: #333333">;</span>
+    <span style="color: #333333">}</span>
+  
+    <span style="color: #008800; font-weight: bold">if</span> <span style="color: #333333">(</span>bottomWall <span style="color: #333333">==</span> <span style="color: #008800; font-weight: bold">true</span><span style="color: #333333">)</span> <span style="color: #333333">{</span><span style="color: #888888">//To make the ball bounce off the bottom wall</span>
+      ballY<span style="color: #333333">-=</span>ballSpeed<span style="color: #333333">;</span>
+    <span style="color: #333333">}</span>
+  
+    <span style="color: #008800; font-weight: bold">if</span> <span style="color: #333333">(</span>topWall <span style="color: #333333">==</span> <span style="color: #008800; font-weight: bold">true</span><span style="color: #333333">)</span> <span style="color: #333333">{</span><span style="color: #888888">//To make the ball bounce off the top wall</span>
+      ballY<span style="color: #333333">+=</span>ballSpeed<span style="color: #333333">;</span>
+    <span style="color: #333333">}</span>
+    
+    <span style="color: #888888">//Racket Control (Key pressed)</span>
+    <span style="color: #008800; font-weight: bold">if</span> <span style="color: #333333">(</span>racketKeys<span style="color: #333333">[</span><span style="color: #0000DD; font-weight: bold">0</span><span style="color: #333333">]</span> <span style="color: #333333">&amp;&amp;</span> rightSideRacketY <span style="color: #333333">&gt;=</span> <span style="color: #0000DD; font-weight: bold">10</span><span style="color: #333333">)</span> <span style="color: #333333">{</span><span style="color: #888888">//When user press Up, the right racket goes up</span>
+    
+      rightSideRacketY <span style="color: #333333">-=</span> <span style="color: #0000DD; font-weight: bold">10</span><span style="color: #333333">;</span>
+      
+    <span style="color: #333333">}</span> <span style="color: #008800; font-weight: bold">if</span> <span style="color: #333333">(</span>racketKeys<span style="color: #333333">[</span><span style="color: #0000DD; font-weight: bold">1</span><span style="color: #333333">]</span> <span style="color: #333333">&amp;&amp;</span> rightSideRacketY <span style="color: #333333">&lt;=</span> height <span style="color: #333333">-</span> <span style="color: #0000DD; font-weight: bold">190</span><span style="color: #333333">)</span> <span style="color: #333333">{</span><span style="color: #888888">//When user press Down, the right racket goes down</span>
+        
+      rightSideRacketY <span style="color: #333333">+=</span> <span style="color: #0000DD; font-weight: bold">10</span><span style="color: #333333">;</span>
+        
+    <span style="color: #333333">}</span>
+     
+  <span style="color: #333333">}</span>
+  
+<span style="color: #333333">}</span>
+
+<span style="color: #333399; font-weight: bold">void</span> <span style="color: #0066BB; font-weight: bold">oneVOneMode</span><span style="color: #333333">()</span> <span style="color: #333333">{</span>
+  
+  background<span style="color: #333333">(</span><span style="color: #FF0000; background-color: #FFAAAA">#</span><span style="color: #0000DD; font-weight: bold">000000</span><span style="color: #333333">);</span><span style="color: #888888">//black background</span>
+  fill<span style="color: #333333">(</span><span style="color: #FF0000; background-color: #FFAAAA">#</span><span style="color: #0000DD; font-weight: bold">39</span>FF14<span style="color: #333333">);</span><span style="color: #888888">//line colour</span>
+  rect<span style="color: #333333">(</span>width <span style="color: #333333">/</span> <span style="color: #0000DD; font-weight: bold">2</span> <span style="color: #333333">-</span> <span style="color: #0000DD; font-weight: bold">8</span><span style="color: #333333">,</span> <span style="color: #0000DD; font-weight: bold">0</span><span style="color: #333333">,</span> <span style="color: #0000DD; font-weight: bold">16</span><span style="color: #333333">,</span> <span style="color: #0000DD; font-weight: bold">1080</span><span style="color: #333333">);</span><span style="color: #888888">//the centre line</span>
+  fill<span style="color: #333333">(</span><span style="color: #FF0000; background-color: #FFAAAA">#</span><span style="color: #0000DD; font-weight: bold">39</span>FF14<span style="color: #333333">);</span><span style="color: #888888">//ball colour</span>
+  ellipse<span style="color: #333333">(</span>ballX<span style="color: #333333">,</span> ballY<span style="color: #333333">,</span> <span style="color: #0000DD; font-weight: bold">30</span><span style="color: #333333">,</span> <span style="color: #0000DD; font-weight: bold">30</span><span style="color: #333333">);</span><span style="color: #888888">//the ball</span>
+  fill<span style="color: #333333">(</span><span style="color: #FF0000; background-color: #FFAAAA">#</span><span style="color: #0000DD; font-weight: bold">39</span>FF14<span style="color: #333333">);</span><span style="color: #888888">//left side racket colour</span>
+  rect<span style="color: #333333">(</span><span style="color: #0000DD; font-weight: bold">0</span><span style="color: #333333">,</span> leftSideRacketY<span style="color: #333333">,</span> <span style="color: #0000DD; font-weight: bold">16</span><span style="color: #333333">,</span> <span style="color: #0000DD; font-weight: bold">180</span><span style="color: #333333">);</span><span style="color: #888888">//left side racket</span>
+  fill<span style="color: #333333">(</span><span style="color: #FF0000; background-color: #FFAAAA">#</span><span style="color: #0000DD; font-weight: bold">39</span>FF14<span style="color: #333333">);</span><span style="color: #888888">//right side racket colour</span>
+  rect<span style="color: #333333">(</span><span style="color: #0000DD; font-weight: bold">1904</span><span style="color: #333333">,</span> rightSideRacketY<span style="color: #333333">,</span> <span style="color: #0000DD; font-weight: bold">16</span><span style="color: #333333">,</span> <span style="color: #0000DD; font-weight: bold">180</span><span style="color: #333333">);</span><span style="color: #888888">//right side racket</span>
+  noCursor<span style="color: #333333">();</span><span style="color: #888888">//removes cursor</span>
+  
+  pixelFont <span style="color: #333333">=</span> createFont<span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;Press Start 2P&quot;</span><span style="color: #333333">,</span> <span style="color: #0000DD; font-weight: bold">60</span><span style="color: #333333">);</span>
+  textFont<span style="color: #333333">(</span>pixelFont<span style="color: #333333">);</span>
+  textAlign<span style="color: #333333">(</span>CENTER<span style="color: #333333">,</span> CENTER<span style="color: #333333">);</span>
+  
+  <span style="color: #888888">//left side score</span>
+  text<span style="color: #333333">(</span>leftScore<span style="color: #333333">,</span> width <span style="color: #333333">/</span> <span style="color: #0000DD; font-weight: bold">2</span> <span style="color: #333333">-</span> <span style="color: #0000DD; font-weight: bold">100</span><span style="color: #333333">,</span> <span style="color: #0000DD; font-weight: bold">100</span><span style="color: #333333">);</span>
+  
+  <span style="color: #888888">//right side score</span>
+  text<span style="color: #333333">(</span>rightScore<span style="color: #333333">,</span> width <span style="color: #333333">/</span> <span style="color: #0000DD; font-weight: bold">2</span> <span style="color: #333333">+</span> <span style="color: #0000DD; font-weight: bold">100</span><span style="color: #333333">,</span> <span style="color: #0000DD; font-weight: bold">100</span><span style="color: #333333">);</span>
+  
+  rightSideRacketBottom <span style="color: #333333">=</span> rightSideRacketY <span style="color: #333333">+</span> <span style="color: #0000DD; font-weight: bold">180</span><span style="color: #333333">;</span><span style="color: #888888">//The value of the right side racket bottom</span>
+  leftSideRacketBottom <span style="color: #333333">=</span> leftSideRacketY <span style="color: #333333">+</span> <span style="color: #0000DD; font-weight: bold">180</span><span style="color: #333333">;</span><span style="color: #888888">//The value of the left side racket bottom</span>
+ 
+  startCountDown<span style="color: #333333">();</span>
+  
+  <span style="color: #008800; font-weight: bold">if</span> <span style="color: #333333">(</span>ballActivate <span style="color: #333333">==</span> <span style="color: #008800; font-weight: bold">true</span><span style="color: #333333">)</span> <span style="color: #333333">{</span>
+    
+    <span style="color: #008800; font-weight: bold">if</span> <span style="color: #333333">(</span>duoBallDirection <span style="color: #333333">&gt;=</span> <span style="color: #0000DD; font-weight: bold">0</span> <span style="color: #333333">&amp;&amp;</span> duoBallDirection <span style="color: #333333">&lt;=</span> <span style="color: #0000DD; font-weight: bold">1</span><span style="color: #333333">)</span> <span style="color: #333333">{</span><span style="color: #888888">//When random number generator generates 0~1, ball goes up and to the right side at the start of the game</span>
+      
+      rightSideRacket <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">true</span><span style="color: #333333">;</span>
+      topWall <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">true</span><span style="color: #333333">;</span>
+      duoBallDirection<span style="color: #333333">+=</span><span style="color: #0000DD; font-weight: bold">4</span><span style="color: #333333">;</span><span style="color: #888888">//cancel out the random after it&#39;s called</span>
+      
+    <span style="color: #333333">}</span> <span style="color: #008800; font-weight: bold">else</span> <span style="color: #008800; font-weight: bold">if</span> <span style="color: #333333">(</span>duoBallDirection <span style="color: #333333">&gt;=</span> <span style="color: #6600EE; font-weight: bold">1.0001</span> <span style="color: #333333">&amp;&amp;</span> duoBallDirection <span style="color: #333333">&lt;=</span> <span style="color: #0000DD; font-weight: bold">2</span><span style="color: #333333">)</span> <span style="color: #333333">{</span><span style="color: #888888">//When random number generator generates 1.0001~2, ball goes down and to the right side at the start of the game</span>
+      
+      rightSideRacket <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">true</span><span style="color: #333333">;</span>
+      bottomWall <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">true</span><span style="color: #333333">;</span>
+      duoBallDirection<span style="color: #333333">+=</span><span style="color: #0000DD; font-weight: bold">4</span><span style="color: #333333">;</span><span style="color: #888888">//cancel out the random after it&#39;s called</span>
+      
+    <span style="color: #333333">}</span> <span style="color: #008800; font-weight: bold">else</span> <span style="color: #008800; font-weight: bold">if</span> <span style="color: #333333">(</span>duoBallDirection <span style="color: #333333">&gt;=</span> <span style="color: #6600EE; font-weight: bold">2.0001</span> <span style="color: #333333">&amp;&amp;</span> duoBallDirection <span style="color: #333333">&lt;=</span> <span style="color: #0000DD; font-weight: bold">3</span><span style="color: #333333">)</span> <span style="color: #333333">{</span><span style="color: #888888">//When random number generator generates 2.0001~3, ball goes up and to the left side at the start of the game</span>
+      
+      leftSideRacket <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">true</span><span style="color: #333333">;</span>
+      topWall <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">true</span><span style="color: #333333">;</span>
+      duoBallDirection<span style="color: #333333">+=</span><span style="color: #0000DD; font-weight: bold">4</span><span style="color: #333333">;</span><span style="color: #888888">//cancel out the random after it&#39;s called</span>
+      
+    <span style="color: #333333">}</span> <span style="color: #008800; font-weight: bold">else</span> <span style="color: #008800; font-weight: bold">if</span> <span style="color: #333333">(</span>duoBallDirection <span style="color: #333333">&gt;=</span> <span style="color: #6600EE; font-weight: bold">3.0001</span> <span style="color: #333333">&amp;&amp;</span> duoBallDirection <span style="color: #333333">&lt;=</span> <span style="color: #0000DD; font-weight: bold">4</span><span style="color: #333333">)</span> <span style="color: #333333">{</span><span style="color: #888888">//When random number generator generates 3.0001~4, ball goes down and to the left side at the start of the game</span>
+      
+      leftSideRacket <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">true</span><span style="color: #333333">;</span>
+      bottomWall <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">true</span><span style="color: #333333">;</span>
+      duoBallDirection<span style="color: #333333">+=</span><span style="color: #0000DD; font-weight: bold">4</span><span style="color: #333333">;</span><span style="color: #888888">//cancel out the random after it&#39;s called</span>
+      
+    <span style="color: #333333">}</span>
+    
+    <span style="color: #008800; font-weight: bold">if</span> <span style="color: #333333">(</span>ballX <span style="color: #333333">+</span> <span style="color: #0000DD; font-weight: bold">15</span> <span style="color: #333333">&gt;=</span> <span style="color: #0000DD; font-weight: bold">1904</span> <span style="color: #333333">&amp;&amp;</span> <span style="color: #333333">(</span>rightSideRacketY <span style="color: #333333">&lt;=</span> ballY <span style="color: #333333">&amp;&amp;</span> ballY <span style="color: #333333">&lt;=</span> rightSideRacketBottom<span style="color: #333333">))</span> <span style="color: #333333">{</span><span style="color: #888888">//The ball moves right until it bounces off the right racket</span>
+      rightSideRacket <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">true</span><span style="color: #333333">;</span>
+      leftSideRacket <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">false</span><span style="color: #333333">;</span>
+      ballSpeed <span style="color: #333333">=</span> ballSpeed <span style="color: #333333">+</span> <span style="color: #333333">(</span>ballSpeed <span style="color: #333333">*</span> <span style="color: #6600EE; font-weight: bold">0.05</span><span style="color: #333333">);</span><span style="color: #888888">//ball speed increases </span>
+    <span style="color: #333333">}</span>
+     
+    <span style="color: #008800; font-weight: bold">else</span> <span style="color: #0066BB; font-weight: bold">if</span> <span style="color: #333333">(</span>ballX <span style="color: #333333">&gt;=</span> <span style="color: #0000DD; font-weight: bold">1910</span><span style="color: #333333">)</span> <span style="color: #333333">{</span><span style="color: #888888">//When the left side scores</span>
+  
+    leftScore<span style="color: #333333">++;</span>
+    ballActivate <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">false</span><span style="color: #333333">;</span>
+    counterSeconds <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">3</span><span style="color: #333333">;</span><span style="color: #888888">//resetting timer</span>
+    <span style="color: #888888">//reset ball and bracket location value and starts the countdown for the next round</span>
+    resetValue<span style="color: #333333">();</span>
+    startCountDown<span style="color: #333333">();</span>
+  
+      <span style="color: #008800; font-weight: bold">if</span> <span style="color: #333333">(</span>leftScore <span style="color: #333333">==</span> <span style="color: #0000DD; font-weight: bold">7</span><span style="color: #333333">)</span> <span style="color: #333333">{</span><span style="color: #888888">//when left side wins (scores 7)</span>
+        screenMode<span style="color: #333333">+=</span><span style="color: #0000DD; font-weight: bold">1</span><span style="color: #333333">;</span>
+        gameOverMode<span style="color: #333333">+=</span><span style="color: #0000DD; font-weight: bold">1</span><span style="color: #333333">;</span>
+      <span style="color: #333333">}</span>
+     
+    <span style="color: #333333">}</span>
+     
+    <span style="color: #008800; font-weight: bold">if</span> <span style="color: #333333">(</span>ballX <span style="color: #333333">-</span> <span style="color: #0000DD; font-weight: bold">15</span> <span style="color: #333333">&lt;=</span> <span style="color: #0000DD; font-weight: bold">16</span> <span style="color: #333333">&amp;&amp;</span> <span style="color: #333333">(</span>leftSideRacketY <span style="color: #333333">&lt;=</span> ballY <span style="color: #333333">&amp;&amp;</span> ballY <span style="color: #333333">&lt;=</span> leftSideRacketBottom<span style="color: #333333">))</span> <span style="color: #333333">{</span><span style="color: #888888">//The ball moves left until it bounces off the left racket</span>
+      leftSideRacket <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">true</span><span style="color: #333333">;</span>
+      rightSideRacket <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">false</span><span style="color: #333333">;</span>
+      ballSpeed <span style="color: #333333">=</span> ballSpeed <span style="color: #333333">+</span> <span style="color: #333333">(</span>ballSpeed <span style="color: #333333">*</span> <span style="color: #6600EE; font-weight: bold">0.05</span><span style="color: #333333">);</span><span style="color: #888888">//ball speed increases </span>
+    <span style="color: #333333">}</span>
+    
+    <span style="color: #008800; font-weight: bold">else</span> <span style="color: #0066BB; font-weight: bold">if</span> <span style="color: #333333">(</span>ballX <span style="color: #333333">&lt;=</span> <span style="color: #0000DD; font-weight: bold">10</span><span style="color: #333333">)</span> <span style="color: #333333">{</span><span style="color: #888888">//When the right side scores</span>
+  
+    rightScore<span style="color: #333333">++;</span>
+    ballActivate <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">false</span><span style="color: #333333">;</span>
+    counterSeconds <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">3</span><span style="color: #333333">;</span><span style="color: #888888">//resetting timer</span>
+    <span style="color: #888888">//reset ball and bracket location value and starts the countdown for the next round</span>
+    resetValue<span style="color: #333333">();</span>
+    startCountDown<span style="color: #333333">();</span>
+  
+      <span style="color: #008800; font-weight: bold">if</span> <span style="color: #333333">(</span>rightScore <span style="color: #333333">==</span> <span style="color: #0000DD; font-weight: bold">7</span><span style="color: #333333">)</span> <span style="color: #333333">{</span><span style="color: #888888">//when right side wins (scores 7)</span>
+        screenMode<span style="color: #333333">+=</span><span style="color: #0000DD; font-weight: bold">1</span><span style="color: #333333">;</span>
+        gameOverMode<span style="color: #333333">+=</span><span style="color: #0000DD; font-weight: bold">2</span><span style="color: #333333">;</span>
+      <span style="color: #333333">}</span>
+  
+    <span style="color: #333333">}</span>
+  
+    <span style="color: #008800; font-weight: bold">if</span> <span style="color: #333333">(</span>rightSideRacket <span style="color: #333333">==</span> <span style="color: #008800; font-weight: bold">true</span><span style="color: #333333">)</span> <span style="color: #333333">{</span><span style="color: #888888">//To make the ball bounce off the right racket</span>
+      ballX<span style="color: #333333">-=</span>ballSpeed<span style="color: #333333">;</span>
+    <span style="color: #333333">}</span>
+  
+    <span style="color: #008800; font-weight: bold">if</span> <span style="color: #333333">(</span>leftSideRacket <span style="color: #333333">==</span> <span style="color: #008800; font-weight: bold">true</span><span style="color: #333333">)</span> <span style="color: #333333">{</span><span style="color: #888888">//To make the ball bounce off the left racket</span>
+      ballX<span style="color: #333333">+=</span>ballSpeed<span style="color: #333333">;</span>
+    <span style="color: #333333">}</span>
+  
+    <span style="color: #008800; font-weight: bold">if</span> <span style="color: #333333">(</span>ballY <span style="color: #333333">+</span> <span style="color: #0000DD; font-weight: bold">15</span> <span style="color: #333333">&gt;=</span> height<span style="color: #333333">)</span> <span style="color: #333333">{</span><span style="color: #888888">//The ball moves down until it bounces off the top wall</span>
+      bottomWall <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">true</span><span style="color: #333333">;</span>
+      topWall <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">false</span><span style="color: #333333">;</span>
+    <span style="color: #333333">}</span>
+    
+    <span style="color: #008800; font-weight: bold">if</span> <span style="color: #333333">(</span>ballY <span style="color: #333333">-</span> <span style="color: #0000DD; font-weight: bold">15</span> <span style="color: #333333">&lt;=</span> <span style="color: #0000DD; font-weight: bold">0</span><span style="color: #333333">)</span> <span style="color: #333333">{</span><span style="color: #888888">//The ball moves down until it bounces off the bottom wall</span>
+      topWall <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">true</span><span style="color: #333333">;</span>
+      bottomWall <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">false</span><span style="color: #333333">;</span>
+    <span style="color: #333333">}</span>
+  
+    <span style="color: #008800; font-weight: bold">if</span> <span style="color: #333333">(</span>bottomWall <span style="color: #333333">==</span> <span style="color: #008800; font-weight: bold">true</span><span style="color: #333333">)</span> <span style="color: #333333">{</span><span style="color: #888888">//To make the ball bounce off the bottom wall</span>
+      ballY<span style="color: #333333">-=</span>ballSpeed<span style="color: #333333">;</span>
+    <span style="color: #333333">}</span>
+  
+    <span style="color: #008800; font-weight: bold">if</span> <span style="color: #333333">(</span>topWall <span style="color: #333333">==</span> <span style="color: #008800; font-weight: bold">true</span><span style="color: #333333">)</span> <span style="color: #333333">{</span><span style="color: #888888">//To make the ball bounce off the top wall</span>
+      ballY<span style="color: #333333">+=</span>ballSpeed<span style="color: #333333">;</span>
+    <span style="color: #333333">}</span>
+    
+    <span style="color: #888888">//Racket Control </span>
+    <span style="color: #008800; font-weight: bold">if</span> <span style="color: #333333">(</span>racketKeys<span style="color: #333333">[</span><span style="color: #0000DD; font-weight: bold">0</span><span style="color: #333333">]</span> <span style="color: #333333">&amp;&amp;</span> rightSideRacketY <span style="color: #333333">&gt;=</span> <span style="color: #0000DD; font-weight: bold">10</span><span style="color: #333333">)</span> <span style="color: #333333">{</span><span style="color: #888888">//When user press Up, the right racket goes up</span>
+    
+      rightSideRacketY <span style="color: #333333">-=</span> <span style="color: #0000DD; font-weight: bold">10</span><span style="color: #333333">;</span>
+      
+    <span style="color: #333333">}</span> <span style="color: #008800; font-weight: bold">if</span> <span style="color: #333333">(</span>racketKeys<span style="color: #333333">[</span><span style="color: #0000DD; font-weight: bold">1</span><span style="color: #333333">]</span> <span style="color: #333333">&amp;&amp;</span> rightSideRacketY <span style="color: #333333">&lt;=</span> height <span style="color: #333333">-</span> <span style="color: #0000DD; font-weight: bold">190</span><span style="color: #333333">)</span> <span style="color: #333333">{</span><span style="color: #888888">//When user press Down, the right racket goes down</span>
+        
+      rightSideRacketY <span style="color: #333333">+=</span> <span style="color: #0000DD; font-weight: bold">10</span><span style="color: #333333">;</span>
+        
+    <span style="color: #333333">}</span> <span style="color: #008800; font-weight: bold">if</span> <span style="color: #333333">(</span>racketKeys<span style="color: #333333">[</span><span style="color: #0000DD; font-weight: bold">2</span><span style="color: #333333">]</span> <span style="color: #333333">&amp;&amp;</span> leftSideRacketY <span style="color: #333333">&gt;=</span> <span style="color: #0000DD; font-weight: bold">10</span><span style="color: #333333">)</span> <span style="color: #333333">{</span><span style="color: #888888">//When user press w, the left racket goes up</span>
+     
+      leftSideRacketY <span style="color: #333333">-=</span> <span style="color: #0000DD; font-weight: bold">10</span><span style="color: #333333">;</span>
+          
+    <span style="color: #333333">}</span> <span style="color: #008800; font-weight: bold">if</span> <span style="color: #333333">(</span>racketKeys<span style="color: #333333">[</span><span style="color: #0000DD; font-weight: bold">3</span><span style="color: #333333">]</span> <span style="color: #333333">&amp;&amp;</span> leftSideRacketY <span style="color: #333333">&lt;=</span> height <span style="color: #333333">-</span> <span style="color: #0000DD; font-weight: bold">190</span><span style="color: #333333">)</span> <span style="color: #333333">{</span><span style="color: #888888">//When user press s, the left racket goes down</span>
+        
+      leftSideRacketY <span style="color: #333333">+=</span> <span style="color: #0000DD; font-weight: bold">10</span><span style="color: #333333">;</span>
+        
+    <span style="color: #333333">}</span> <span style="color: #008800; font-weight: bold">if</span> <span style="color: #333333">(</span>racketKeys<span style="color: #333333">[</span><span style="color: #0000DD; font-weight: bold">0</span><span style="color: #333333">]</span> <span style="color: #333333">&amp;&amp;</span> racketKeys<span style="color: #333333">[</span><span style="color: #0000DD; font-weight: bold">2</span><span style="color: #333333">]</span> <span style="color: #333333">&amp;&amp;</span> rightSideRacketY <span style="color: #333333">&gt;=</span> <span style="color: #0000DD; font-weight: bold">10</span> <span style="color: #333333">&amp;&amp;</span> leftSideRacketY <span style="color: #333333">&gt;=</span> <span style="color: #0000DD; font-weight: bold">10</span><span style="color: #333333">)</span> <span style="color: #333333">{</span><span style="color: #888888">//When up and w pressed at the same time</span>
+        <span style="color: #888888">//rightSideRacketY -= 10;</span>
+        <span style="color: #888888">//leftSideRacketY -= 10;</span>
+    <span style="color: #333333">}</span> <span style="color: #008800; font-weight: bold">if</span> <span style="color: #333333">(</span>racketKeys<span style="color: #333333">[</span><span style="color: #0000DD; font-weight: bold">0</span><span style="color: #333333">]</span> <span style="color: #333333">&amp;&amp;</span> racketKeys<span style="color: #333333">[</span><span style="color: #0000DD; font-weight: bold">3</span><span style="color: #333333">]</span> <span style="color: #333333">&amp;&amp;</span> rightSideRacketY <span style="color: #333333">&gt;=</span> <span style="color: #0000DD; font-weight: bold">10</span> <span style="color: #333333">&amp;&amp;</span> leftSideRacketY <span style="color: #333333">&lt;=</span> height <span style="color: #333333">-</span> <span style="color: #0000DD; font-weight: bold">190</span><span style="color: #333333">)</span> <span style="color: #333333">{</span><span style="color: #888888">//When up and s pressed at the same time</span>
+        <span style="color: #888888">//rightSideRacketY -= 10;</span>
+        <span style="color: #888888">//leftSideRacketY += 10;</span>
+    <span style="color: #333333">}</span> <span style="color: #008800; font-weight: bold">if</span> <span style="color: #333333">(</span>racketKeys<span style="color: #333333">[</span><span style="color: #0000DD; font-weight: bold">1</span><span style="color: #333333">]</span> <span style="color: #333333">&amp;&amp;</span> racketKeys<span style="color: #333333">[</span><span style="color: #0000DD; font-weight: bold">2</span><span style="color: #333333">]</span> <span style="color: #333333">&amp;&amp;</span>rightSideRacketY <span style="color: #333333">&lt;=</span> height <span style="color: #333333">-</span> <span style="color: #0000DD; font-weight: bold">190</span> <span style="color: #333333">&amp;&amp;</span> leftSideRacketY <span style="color: #333333">&gt;=</span> <span style="color: #0000DD; font-weight: bold">10</span><span style="color: #333333">)</span> <span style="color: #333333">{</span><span style="color: #888888">//When down and w pressed at the same time</span>
+        <span style="color: #888888">//rightSideRacketY += 10;</span>
+        <span style="color: #888888">//leftSideRacketY -= 10;</span>
+    <span style="color: #333333">}</span> <span style="color: #008800; font-weight: bold">if</span> <span style="color: #333333">(</span>racketKeys<span style="color: #333333">[</span><span style="color: #0000DD; font-weight: bold">1</span><span style="color: #333333">]</span> <span style="color: #333333">&amp;&amp;</span> racketKeys<span style="color: #333333">[</span><span style="color: #0000DD; font-weight: bold">3</span><span style="color: #333333">]</span> <span style="color: #333333">&amp;&amp;</span> rightSideRacketY <span style="color: #333333">&lt;=</span> height <span style="color: #333333">-</span> <span style="color: #0000DD; font-weight: bold">190</span> <span style="color: #333333">&amp;&amp;</span> leftSideRacketY <span style="color: #333333">&lt;=</span> height <span style="color: #333333">-</span> <span style="color: #0000DD; font-weight: bold">190</span><span style="color: #333333">)</span> <span style="color: #333333">{</span><span style="color: #888888">//When down and s pressed at the same time</span>
+        <span style="color: #888888">//rightSideRacketY += 10;</span>
+        <span style="color: #888888">//leftSideRacketY += 10;</span>
+    <span style="color: #333333">}</span>
+    
+  <span style="color: #333333">}</span>
+    
+<span style="color: #333333">}</span>
+
+<span style="color: #333399; font-weight: bold">void</span> <span style="color: #0066BB; font-weight: bold">gameOver</span><span style="color: #333333">()</span> <span style="color: #333333">{</span>
+  
+  background<span style="color: #333333">(</span><span style="color: #FF0000; background-color: #FFAAAA">#</span><span style="color: #0000DD; font-weight: bold">000000</span><span style="color: #333333">);</span><span style="color: #888888">//black background</span>
+  pixelFont <span style="color: #333333">=</span> createFont<span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;Press Start 2P&quot;</span><span style="color: #333333">,</span> <span style="color: #0000DD; font-weight: bold">200</span><span style="color: #333333">);</span>
+  textFont<span style="color: #333333">(</span>pixelFont<span style="color: #333333">);</span>
+  textAlign<span style="color: #333333">(</span>CENTER<span style="color: #333333">,</span> CENTER<span style="color: #333333">);</span>
+  text<span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;GAME OVER&quot;</span><span style="color: #333333">,</span> <span style="color: #0000DD; font-weight: bold">960</span><span style="color: #333333">,</span> <span style="color: #0000DD; font-weight: bold">400</span><span style="color: #333333">);</span>
+  fill<span style="color: #333333">(</span><span style="color: #FF0000; background-color: #FFAAAA">#</span>FF2D00<span style="color: #333333">);</span>
+  textSize<span style="color: #333333">(</span><span style="color: #0000DD; font-weight: bold">32</span><span style="color: #333333">);</span>
+  noCursor<span style="color: #333333">();</span><span style="color: #888888">//removes cursor</span>
+    
+  <span style="color: #008800; font-weight: bold">if</span> <span style="color: #333333">(</span>gameOverMode <span style="color: #333333">==</span> <span style="color: #0000DD; font-weight: bold">1</span><span style="color: #333333">)</span> <span style="color: #333333">{</span><span style="color: #888888">//when player 2 wins in 1v1 mode</span>
+      
+    fill<span style="color: #333333">(</span><span style="color: #FF0000; background-color: #FFAAAA">#</span>FFFF00<span style="color: #333333">);</span>
+    textAlign<span style="color: #333333">(</span>CENTER<span style="color: #333333">,</span> CENTER<span style="color: #333333">);</span>
+    text<span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;Player 1 won!&quot;</span><span style="color: #333333">,</span> <span style="color: #0000DD; font-weight: bold">960</span><span style="color: #333333">,</span> <span style="color: #0000DD; font-weight: bold">700</span><span style="color: #333333">);</span>
+      
+  <span style="color: #333333">}</span> <span style="color: #008800; font-weight: bold">else</span> <span style="color: #008800; font-weight: bold">if</span> <span style="color: #333333">(</span>gameOverMode <span style="color: #333333">==</span> <span style="color: #0000DD; font-weight: bold">2</span><span style="color: #333333">)</span> <span style="color: #333333">{</span><span style="color: #888888">//when player 2 wins in 1v1 mode</span>
+      
+    fill<span style="color: #333333">(</span><span style="color: #FF0000; background-color: #FFAAAA">#</span>FFFF00<span style="color: #333333">);</span>
+    textAlign<span style="color: #333333">(</span>CENTER<span style="color: #333333">,</span> CENTER<span style="color: #333333">);</span>
+    text<span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;Player 2 won!&quot;</span><span style="color: #333333">,</span> <span style="color: #0000DD; font-weight: bold">960</span><span style="color: #333333">,</span> <span style="color: #0000DD; font-weight: bold">700</span><span style="color: #333333">);</span>
+      
+  <span style="color: #333333">}</span>
+    
+  fill<span style="color: #333333">(</span><span style="color: #FF0000; background-color: #FFAAAA">#</span>FF2D00<span style="color: #333333">);</span>
+  textAlign<span style="color: #333333">(</span>CENTER<span style="color: #333333">,</span> CENTER<span style="color: #333333">);</span>
+  text<span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;Press space to restart.&quot;</span><span style="color: #333333">,</span> <span style="color: #0000DD; font-weight: bold">960</span><span style="color: #333333">,</span> <span style="color: #0000DD; font-weight: bold">900</span><span style="color: #333333">);</span>
+   
+  <span style="color: #008800; font-weight: bold">if</span> <span style="color: #333333">(</span>keyPressed<span style="color: #333333">)</span> <span style="color: #333333">{</span>
+    <span style="color: #008800; font-weight: bold">if</span> <span style="color: #333333">(</span>key <span style="color: #333333">==</span> <span style="color: #0000DD; font-weight: bold">32</span><span style="color: #333333">)</span> <span style="color: #333333">{</span><span style="color: #888888">//space</span>
+      setup<span style="color: #333333">();</span>
+    <span style="color: #333333">}</span>
+  <span style="color: #333333">}</span>
+    
+<span style="color: #333333">}</span>
+
+<span style="color: #333399; font-weight: bold">void</span> <span style="color: #0066BB; font-weight: bold">resetValue</span><span style="color: #333333">()</span> <span style="color: #333333">{</span><span style="color: #888888">//resets all the values that are changed during the game when the game starts</span>
+  
+  ballSpeed <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">5</span><span style="color: #333333">;</span>
+  ballX <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">960</span><span style="color: #333333">;</span>
+  ballY <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">540</span><span style="color: #333333">;</span>
+  rightSideRacketY <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">1080</span> <span style="color: #333333">/</span> <span style="color: #0000DD; font-weight: bold">2</span> <span style="color: #333333">-</span> <span style="color: #0000DD; font-weight: bold">90</span><span style="color: #333333">;</span>
+  leftSideRacketY <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">1080</span> <span style="color: #333333">/</span> <span style="color: #0000DD; font-weight: bold">2</span> <span style="color: #333333">-</span> <span style="color: #0000DD; font-weight: bold">90</span><span style="color: #333333">;</span>
+  topWall <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">false</span><span style="color: #333333">;</span>
+  leftSideRacket <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">false</span><span style="color: #333333">;</span>
+  rightSideRacket <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">false</span><span style="color: #333333">;</span>
+  bottomWall <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">false</span><span style="color: #333333">;</span>
+  
+<span style="color: #333333">}</span>
+  
+<span style="color: #333399; font-weight: bold">void</span> <span style="color: #0066BB; font-weight: bold">startCountDown</span><span style="color: #333333">()</span> <span style="color: #333333">{</span><span style="color: #888888">//3 seconds of countdown before the game starts</span>
+  
+  <span style="color: #008800; font-weight: bold">if</span> <span style="color: #333333">(</span>counterSeconds <span style="color: #333333">&gt;</span> <span style="color: #0000DD; font-weight: bold">0</span><span style="color: #333333">)</span> <span style="color: #333333">{</span><span style="color: #888888">//when countdown second is more than 0 (1-3)</span>
+    <span style="color: #888888">//displaying countdown second</span>
+    fill<span style="color: #333333">(</span><span style="color: #FF0000; background-color: #FFAAAA">#</span>FFFFFF<span style="color: #333333">);</span>
+    pixelFont <span style="color: #333333">=</span> createFont<span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;Press Start 2P&quot;</span><span style="color: #333333">,</span> <span style="color: #0000DD; font-weight: bold">200</span><span style="color: #333333">);</span>
+    textFont<span style="color: #333333">(</span>pixelFont<span style="color: #333333">);</span>
+    textAlign<span style="color: #333333">(</span>CENTER<span style="color: #333333">,</span> CENTER<span style="color: #333333">);</span>
+    text<span style="color: #333333">(</span>counterSeconds<span style="color: #333333">,</span> width <span style="color: #333333">/</span> <span style="color: #0000DD; font-weight: bold">2</span><span style="color: #333333">,</span> <span style="color: #0000DD; font-weight: bold">400</span><span style="color: #333333">);</span>
+    
+    <span style="color: #008800; font-weight: bold">if</span> <span style="color: #333333">(</span>counterMillis <span style="color: #333333">&gt;=</span> fps<span style="color: #333333">)</span> <span style="color: #333333">{</span><span style="color: #888888">//milliseconds to decrease second</span>
+      counterMillis <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span><span style="color: #333333">;</span>
+      counterSeconds<span style="color: #333333">--;</span>
+    <span style="color: #333333">}</span>
+    counterMillis<span style="color: #333333">++;</span><span style="color: #888888">//increasing milliseconds for 60 times (FPS) in 1 second</span>
+     
+    <span style="color: #008800; font-weight: bold">if</span> <span style="color: #333333">(</span>counterSeconds <span style="color: #333333">==</span> <span style="color: #0000DD; font-weight: bold">0</span> <span style="color: #333333">&amp;&amp;</span> screenMode <span style="color: #333333">==</span> <span style="color: #0000DD; font-weight: bold">2</span><span style="color: #333333">){</span><span style="color: #888888">//if the game mode is practice mode</span>
+  
+      ballActivate <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">true</span><span style="color: #333333">;</span><span style="color: #888888">//activates ballActive so it starts moving</span>
+      soloBallDirection <span style="color: #333333">=</span> random<span style="color: #333333">(</span><span style="color: #0000DD; font-weight: bold">2</span><span style="color: #333333">);</span>
+    
+    <span style="color: #333333">}</span><span style="color: #008800; font-weight: bold">else</span> <span style="color: #008800; font-weight: bold">if</span><span style="color: #333333">(</span>counterSeconds <span style="color: #333333">==</span> <span style="color: #0000DD; font-weight: bold">0</span> <span style="color: #333333">&amp;&amp;</span> screenMode <span style="color: #333333">==</span> <span style="color: #0000DD; font-weight: bold">3</span><span style="color: #333333">){</span><span style="color: #888888">//if the game mode is 1v1 mode</span>
+  
+      ballActivate <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">true</span><span style="color: #333333">;</span><span style="color: #888888">//activates ballActive so it starts moving</span>
+      duoBallDirection <span style="color: #333333">=</span> random<span style="color: #333333">(</span><span style="color: #0000DD; font-weight: bold">4</span><span style="color: #333333">);</span>
+    
+    <span style="color: #333333">}</span>
+  <span style="color: #333333">}</span>
+<span style="color: #333333">}</span>
+</pre></td></tr></table></div>
+						</div>
+						
+						<img src="pongGame.png" width="480" height="325">
+					</div>
+					<div id="right-content"> 
+						<h1><strong>Money Counter</strong></h1>
+						<p>This is my minor project, money counter.</p>
+						<p>We learned a new language called Java, but in Processing so the language is basically very similar to c++, but it's like a visualizable programming language so I instantly thought of making a video game for my project.</p>
+						<p>So since it's a minor project meaning it's a project to show if I understood the language or not, so I thought it'd be right to make something very simple, but still it requires an advanced elements.</p>
+						<p>For this program, I used Buttons, arrays and for loop. So once a user clicks each money, it adds up the total value by the value of the money that user has clicked.</p>
+						<p>Array was used to make the program shorter and get it organized better. If I set the value to every individual photos and integers, I know it would take forever to do that so I decided to use Arrays.</p>
+						<img src="moneyCounter.png" width="480" height="325">
+						<hr>
+						<h1><strong>Money Counter</strong></h1>
+						<p>This is my holy major Java project, Pong.</p>
+						<p>Fun fact is that this was supposed to be my minor project. So what happened was my Pong when I was working on it as a minor project, people has said that it should be my major project just because it's too huge.</p>
+						<p>Compared to other people, I had too many features with minor so I just changed my mind and changed it to major.<p>
+						<p>That was the best option because I was actually thinking of hand sign language detector using webcam on the imac which is practically impossible because of the time we get to work on this and how advanced it is to just make the wbecam scan your finger movement.</p>
+						<p>So pong because I was already working on it and it was great, I changed it to Major and started actually putting in effort and use advanced elements in it.</p>
+						<p>I used hit detector, boolean array, KeyPressed, Released and MousePressed. And as a result, the game looked just like one of those online pong and I was super satisfied after working on it.</p>
+						<p>Pong seems easy to make but it took me like a month to finish it so no one should underestimate Pong developers.</p>
+						<img src="pongLobby.png" width="480" height="325">
+						<p>Those 2 photos are how the program looks like. As you can see, it looks really similar to the Original Pong.</p>
+						<p><-</p>
+					</div>
+				<div>
+
+			</main>
+			
+			<footer>
+				<p>Designed and coded by Justin Yoon aka DizzyTube.</p>
+				<p>&copy; 2019-2020 DizzyTube&trade;</p>
+				<p>All rights reserved.</p>
+				<br>
+				<p>Email:justinyoon95s2@gmail.com</p>
+				<p>Instagram:@justinyoon95</p>
+				<p>Snapchat:justinyoon95</p>
+			</footer>
+			
+		</div>
+		
+	</body>
+	
+</html>
