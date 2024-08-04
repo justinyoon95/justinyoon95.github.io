@@ -3,7 +3,7 @@
 </h2>
 
 # About
-Hello! If you are here to get to know me better, you are at the right place. If you are a recruiter, just saying, don't hesitate to email me because I am down to work for your company (half joking, half serious). My porfolio website is something I plan to develop over the coming years, which it will be featuring my persoanl project as well as my resume, technically skills, and just some corny stories and jokes about me.
+Hello! If you’re here to get to know me better, you’re in the right place. If you are a recruiter, just saying, don't hesitate to email me—I am down to work for your company (half joking, half serious). My portfolio website is something I plan to develop over the coming years. It will feature my personal projects, as well as my resume, technical skills, and a few corny stories and jokes about me.
 
 ### Built with
 - React.js
