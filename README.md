@@ -1,4 +1,17 @@
-# Getting Started with Create React App
+<h2 align="center">
+    Justin's Portfolio Website 
+</h2>
+
+# About
+Hello! If you are here to get to know me better, you are at the right place. If you are a recruiter, just saying, don't hesitate to email me because I am down to work for your company (half joking, half serious). My porfolio website is something I plan to develop over the coming years, which it will be featuring my persoanl project as well as my resume, technically skills, and just some corny stories and jokes about me.
+
+### Built with
+- React.js
+- JavaScript
+- HTML/CSS
+- IDE: VS Code
+
+# Getting Started
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
