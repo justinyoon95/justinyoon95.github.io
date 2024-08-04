@@ -5,6 +5,7 @@
 # About
 Hello! If you’re here to get to know me better, you’re in the right place. If you are a recruiter, just saying, don't hesitate to email me—I am down to work for your company (half joking, half serious). My portfolio website is something I plan to develop over the coming years. It will feature my personal projects, as well as my resume, technical skills, and a few corny stories and jokes about me.
 
+You can check out the website by clicking [here](https://justinyoon95.github.io/).
 ### Built with
 - React.js
 - JavaScript
